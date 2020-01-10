@@ -19,6 +19,7 @@ namespace SimpleTaxiControl
         public UserForm()
         {
             InitializeComponent();
+            
         }
 
         public UserForm(User user) : base()
