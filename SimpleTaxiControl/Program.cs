@@ -8,6 +8,7 @@ namespace SimpleTaxiControl
 {
     static class Program
     {
+        public static ApplicationContext Context { get; set; }
         /// <summary>
         /// Главная точка входа для приложения.
         /// </summary>
@@ -16,7 +17,9 @@ namespace SimpleTaxiControl
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+
+            Context = new ApplicationContext(new AuthorizationForm());
+            Application.Run(Context);
         }
     }
 }
