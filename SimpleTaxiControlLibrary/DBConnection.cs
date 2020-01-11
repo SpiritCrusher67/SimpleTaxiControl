@@ -8,7 +8,7 @@ namespace SimpleTaxiControlLibrary
 {
     static class DBConnection
     {
-        public static string ConnectionString { get; set; }
+        public static string ConnectionString { get; set; } = @"Data Source=DESKTOP-O01TIT6\SQLEXPRESS;Initial Catalog=SimpleTaxiControlDB;Integrated Security=True";
 
 
     }

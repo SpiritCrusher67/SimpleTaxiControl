@@ -26,6 +26,11 @@ namespace SimpleTaxiControlLibrary
             SaveCall();
         }
 
+        public Call(int id)
+        {
+            LoadCallFromDB(id);
+        }
+
         public void SaveCall()
         {
             SqlParameter numberparam = new SqlParameter("@Number", Number);
@@ -55,6 +60,33 @@ namespace SimpleTaxiControlLibrary
             }
 
             Id = (int)idParam.Value;
+        }
+
+        private void LoadCallFromDB(int id)
+        {
+            SqlParameter idParam = new SqlParameter("@id", id);
+
+            string query = "select * from Calls where id = @id";
+
+            using (SqlConnection connection = new SqlConnection(DBConnection.ConnectionString))
+            {
+                connection.Open();
+
+                SqlCommand command = new SqlCommand(query, connection);
+
+                command.Parameters.Add(idParam);
+
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        Id = reader.GetInt32(0);
+                        Number = reader.GetString(1);
+                        ResponsibleUser = User.GetUser(reader.GetString(2));
+                        Date = reader.GetDateTime(3);
+                    }
+                }
+            }
         }
     }
 }

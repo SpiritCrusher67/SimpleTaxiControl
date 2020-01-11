@@ -28,7 +28,9 @@ namespace SimpleTaxiControlLibrary
 
         public int Id { get; private set; }
 
-        public Order(string addressFrom, string numberFrom, string addressTo, string numberTo, DateTime date, string comment,Call call)
+        public Driver Driver { get; set; }
+
+        public Order(string addressFrom, string numberFrom, string addressTo, string numberTo, DateTime date, string comment, Call call)
         {
             AddressFrom = addressFrom;
 
@@ -47,6 +49,11 @@ namespace SimpleTaxiControlLibrary
             Call = call;
 
             SaveOrder();
+        }
+
+        public Order(int id)
+        {
+            loadOrderFromDB(id);
         }
 
         private void SaveOrder()
@@ -104,6 +111,39 @@ namespace SimpleTaxiControlLibrary
 
             Id = (int)idParam.Value;
 
+        }
+
+        private void loadOrderFromDB(int id)
+        {
+            SqlParameter idParam = new SqlParameter("@id", id);
+
+            string query = "select * from Orders where id = @id";
+
+            using (SqlConnection connection = new SqlConnection(DBConnection.ConnectionString))
+            {
+                connection.Open();
+
+                SqlCommand command = new SqlCommand(query, connection);
+
+                command.Parameters.Add(idParam);
+            
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        AddressFrom = reader.GetString(1);
+                        NumberFrom = reader.GetString(2);
+                        AddressTo = reader.GetString(3);
+                        NumberTo = reader.GetString(4);
+                        Date = reader.GetDateTime(5);
+                        Status = reader.GetInt32(6);
+                        Call = new Call(reader.GetInt32(7));
+                        Comment = reader.GetValue(8).ToString();
+                        Driver = (reader.GetValue(9).ToString() != string.Empty) ? new Driver(reader.GetInt32(9)) : null;
+
+                    }
+                }
+            }
         }
     }
 }

@@ -31,7 +31,7 @@ namespace SimpleTaxiControl
         private void UserForm_Load(object sender, EventArgs e)
         {
             userNameLabel.Text = "Пользователь: " + CurentUser.Name;
-
+            LoadData();
         }
 
         private void takeСallBtn_Click(object sender, EventArgs e)
@@ -41,6 +41,29 @@ namespace SimpleTaxiControl
             Call call = new Call(incomingCallsListBox.SelectedItem.ToString(), CurentUser);
 
             new TakeCallForm(call).Show();
+        }
+
+        private void LoadData()
+        {
+            foreach (Order order in ActiveOrders.GetFreeOrders())
+            {
+                freeOrdersListView.Items.Add(new ListViewItem(new string[] { order.AddressFrom, order.AddressTo }));
+            }
+
+            foreach (Order order in ActiveOrders.GetAcceptedOrders())
+            {
+                acceptedOrdersListView.Items.Add(new ListViewItem(new string[] { order.AddressFrom, order.AddressTo,order.Driver.Id.ToString() }));
+            }
+
+            foreach (Order order in ActiveOrders.GetInProgressOrders())
+            {
+                executingOrdersListView.Items.Add(new ListViewItem(new string[] { order.AddressFrom, order.AddressTo, order.Driver.Id.ToString() }));
+            }
+
+            foreach (Driver driver in OnlineDrivers.GetOnlineOrders())
+            {
+                driversListView.Items.Add(new ListViewItem(new string[] { driver.Id.ToString(),driver.Status.ToString(),driver.Model }));
+            }
         }
     }
 }

@@ -37,5 +37,29 @@ namespace SimpleTaxiControlLibrary
                 }
             }
         }
+
+        public static User GetUser(string login)
+        {
+            using (SqlConnection connection = new SqlConnection(DBConnection.ConnectionString))
+            {
+                connection.Open();
+                SqlCommand command = new SqlCommand("select Name from Users where login = @login", connection);
+                SqlParameter loginparam = new SqlParameter("@login", login);
+                command.Parameters.Add(loginparam);
+                string name = command.ExecuteScalar().ToString();
+                if (name != null)
+                {
+                    return new User
+                    {
+                        Login = loginparam.Value.ToString(),
+                        Name = name
+                    };
+                }
+                else
+                {
+                    return null;
+                }
+            }
+        }
     }
 }

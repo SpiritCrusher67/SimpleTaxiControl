@@ -41,8 +41,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActiveOrders.cs" />
     <Compile Include="Call.cs" />
     <Compile Include="DBConnection.cs" />
+    <Compile Include="Driver.cs" />
+    <Compile Include="DriverStatuses.cs" />
+    <Compile Include="OnlineDrivers.cs" />
     <Compile Include="Order.cs" />
     <Compile Include="OrderStatuses.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

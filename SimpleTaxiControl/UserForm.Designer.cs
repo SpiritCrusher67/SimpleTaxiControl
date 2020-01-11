@@ -36,18 +36,15 @@
             this.freeOrdersListView = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.acceptedOrdersGrBox = new System.Windows.Forms.GroupBox();
             this.acceptedOrdersListView = new System.Windows.Forms.ListView();
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.executingOrdersGrBox = new System.Windows.Forms.GroupBox();
             this.executingOrdersListView = new System.Windows.Forms.ListView();
             this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader10 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader11 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.driversGrBox = new System.Windows.Forms.GroupBox();
             this.driversListView = new System.Windows.Forms.ListView();
@@ -116,8 +113,8 @@
             // 
             this.freeOrdersListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
-            this.columnHeader2,
-            this.columnHeader3});
+            this.columnHeader2});
+            this.freeOrdersListView.FullRowSelect = true;
             this.freeOrdersListView.Location = new System.Drawing.Point(6, 19);
             this.freeOrdersListView.Name = "freeOrdersListView";
             this.freeOrdersListView.Size = new System.Drawing.Size(272, 133);
@@ -132,10 +129,6 @@
             // columnHeader2
             // 
             this.columnHeader2.Text = "Куда";
-            // 
-            // columnHeader3
-            // 
-            this.columnHeader3.Text = "Цена";
             // 
             // acceptedOrdersGrBox
             // 
@@ -152,8 +145,8 @@
             this.acceptedOrdersListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader4,
             this.columnHeader5,
-            this.columnHeader6,
             this.columnHeader7});
+            this.acceptedOrdersListView.FullRowSelect = true;
             this.acceptedOrdersListView.Location = new System.Drawing.Point(6, 19);
             this.acceptedOrdersListView.Name = "acceptedOrdersListView";
             this.acceptedOrdersListView.Size = new System.Drawing.Size(272, 133);
@@ -168,10 +161,6 @@
             // columnHeader5
             // 
             this.columnHeader5.Text = "Куда";
-            // 
-            // columnHeader6
-            // 
-            this.columnHeader6.Text = "Цена";
             // 
             // columnHeader7
             // 
@@ -192,8 +181,8 @@
             this.executingOrdersListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader8,
             this.columnHeader9,
-            this.columnHeader10,
             this.columnHeader11});
+            this.executingOrdersListView.FullRowSelect = true;
             this.executingOrdersListView.Location = new System.Drawing.Point(6, 19);
             this.executingOrdersListView.Name = "executingOrdersListView";
             this.executingOrdersListView.Size = new System.Drawing.Size(272, 133);
@@ -208,10 +197,6 @@
             // columnHeader9
             // 
             this.columnHeader9.Text = "Куда";
-            // 
-            // columnHeader10
-            // 
-            this.columnHeader10.Text = "Цена";
             // 
             // columnHeader11
             // 
@@ -233,6 +218,7 @@
             this.columnHeader16,
             this.columnHeader17,
             this.columnHeader18});
+            this.driversListView.FullRowSelect = true;
             this.driversListView.Location = new System.Drawing.Point(6, 19);
             this.driversListView.Name = "driversListView";
             this.driversListView.Size = new System.Drawing.Size(277, 133);
@@ -286,18 +272,15 @@
         private System.Windows.Forms.ListView freeOrdersListView;
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
-        private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.GroupBox acceptedOrdersGrBox;
         private System.Windows.Forms.ListView acceptedOrdersListView;
         private System.Windows.Forms.ColumnHeader columnHeader4;
         private System.Windows.Forms.ColumnHeader columnHeader5;
-        private System.Windows.Forms.ColumnHeader columnHeader6;
         private System.Windows.Forms.ColumnHeader columnHeader7;
         private System.Windows.Forms.GroupBox executingOrdersGrBox;
         private System.Windows.Forms.ListView executingOrdersListView;
         private System.Windows.Forms.ColumnHeader columnHeader8;
         private System.Windows.Forms.ColumnHeader columnHeader9;
-        private System.Windows.Forms.ColumnHeader columnHeader10;
         private System.Windows.Forms.ColumnHeader columnHeader11;
         private System.Windows.Forms.GroupBox driversGrBox;
         private System.Windows.Forms.ListView driversListView;
