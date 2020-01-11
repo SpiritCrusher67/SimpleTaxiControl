@@ -22,8 +22,9 @@ namespace SimpleTaxiControl
             
         }
 
-        public UserForm(User user) : base()
+        public UserForm(User user)
         {
+            InitializeComponent();
             CurentUser = user;
         }
 
@@ -31,6 +32,15 @@ namespace SimpleTaxiControl
         {
             userNameLabel.Text = "Пользователь: " + CurentUser.Name;
 
+        }
+
+        private void takeСallBtn_Click(object sender, EventArgs e)
+        {
+            incomingCallsListBox.Items.Remove(incomingCallsListBox.SelectedItem);
+
+            Call call = new Call(incomingCallsListBox.SelectedItem.ToString(), CurentUser);
+
+            new TakeCallForm(call).Show();
         }
     }
 }

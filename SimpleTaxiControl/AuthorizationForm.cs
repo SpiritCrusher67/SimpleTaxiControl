@@ -27,8 +27,9 @@ namespace SimpleTaxiControl
             if (user != null)
             {
                 Program.Context.MainForm = new UserForm(user);
-                Close();
                 Program.Context.MainForm.Show();
+                Close();
+
 
             }
             else

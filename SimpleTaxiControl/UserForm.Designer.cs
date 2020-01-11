@@ -30,8 +30,8 @@
         {
             this.userNameLabel = new System.Windows.Forms.Label();
             this.callsGrBox = new System.Windows.Forms.GroupBox();
-            this.incomingCallsListBox = new System.Windows.Forms.ListBox();
             this.takeСallBtn = new System.Windows.Forms.Button();
+            this.incomingCallsListBox = new System.Windows.Forms.ListBox();
             this.freeOrdersGrBox = new System.Windows.Forms.GroupBox();
             this.freeOrdersListView = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -81,6 +81,16 @@
             this.callsGrBox.TabStop = false;
             this.callsGrBox.Text = "Входящие звонки";
             // 
+            // takeСallBtn
+            // 
+            this.takeСallBtn.Location = new System.Drawing.Point(6, 120);
+            this.takeСallBtn.Name = "takeСallBtn";
+            this.takeСallBtn.Size = new System.Drawing.Size(130, 32);
+            this.takeСallBtn.TabIndex = 1;
+            this.takeСallBtn.Text = "Принять звонок";
+            this.takeСallBtn.UseVisualStyleBackColor = true;
+            this.takeСallBtn.Click += new System.EventHandler(this.takeСallBtn_Click);
+            // 
             // incomingCallsListBox
             // 
             this.incomingCallsListBox.FormattingEnabled = true;
@@ -91,15 +101,6 @@
             this.incomingCallsListBox.Name = "incomingCallsListBox";
             this.incomingCallsListBox.Size = new System.Drawing.Size(130, 95);
             this.incomingCallsListBox.TabIndex = 0;
-            // 
-            // takeСallBtn
-            // 
-            this.takeСallBtn.Location = new System.Drawing.Point(6, 120);
-            this.takeСallBtn.Name = "takeСallBtn";
-            this.takeСallBtn.Size = new System.Drawing.Size(130, 32);
-            this.takeСallBtn.TabIndex = 1;
-            this.takeСallBtn.Text = "Принять звонок";
-            this.takeСallBtn.UseVisualStyleBackColor = true;
             // 
             // freeOrdersGrBox
             // 
