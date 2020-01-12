@@ -49,7 +49,9 @@ namespace SimpleTaxiControlLibrary
             }
         }
 
-        public static List<Driver> GetOnlineOrders() => DriversList.Where(d => d.Status != DriverStatuses.Offline).ToList();
+        public static List<Driver> GetOnlineDrivers() => DriversList.Where(d => d.Status != DriverStatuses.Offline).ToList();
+
+        public static List<Driver> GetFreeDrivers() => DriversList.Where(d => d.Status == DriverStatuses.Free).ToList();
 
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SimpleTaxiControlLibrary
 {
-    enum OrderStatuses
+    public enum OrderStatuses
     {
         Free = 1,
         Accepted = 2,

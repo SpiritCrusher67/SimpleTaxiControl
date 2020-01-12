@@ -22,13 +22,13 @@ namespace SimpleTaxiControlLibrary
                 SqlParameter loginparam = new SqlParameter("@login", login);
                 command.Parameters.Add(loginparam);
                 command.Parameters.Add(new SqlParameter("@password", password));
-                string name = command.ExecuteScalar().ToString();
+                var name = command.ExecuteScalar();
                 if (name != null)
                 {
                     return new User
                     {
                         Login = loginparam.Value.ToString(),
-                        Name = name
+                        Name = (string)name
                     };
                 }
                 else

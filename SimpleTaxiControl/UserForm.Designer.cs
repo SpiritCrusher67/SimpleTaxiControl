@@ -51,6 +51,10 @@
             this.columnHeader16 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader17 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader18 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader10 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.refreshData = new System.Windows.Forms.Button();
             this.callsGrBox.SuspendLayout();
             this.freeOrdersGrBox.SuspendLayout();
             this.acceptedOrdersGrBox.SuspendLayout();
@@ -112,6 +116,7 @@
             // freeOrdersListView
             // 
             this.freeOrdersListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader3,
             this.columnHeader1,
             this.columnHeader2});
             this.freeOrdersListView.FullRowSelect = true;
@@ -143,6 +148,7 @@
             // acceptedOrdersListView
             // 
             this.acceptedOrdersListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader6,
             this.columnHeader4,
             this.columnHeader5,
             this.columnHeader7});
@@ -179,6 +185,7 @@
             // executingOrdersListView
             // 
             this.executingOrdersListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader10,
             this.columnHeader8,
             this.columnHeader9,
             this.columnHeader11});
@@ -238,11 +245,34 @@
             // 
             this.columnHeader18.Text = "Модель";
             // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "Id";
+            // 
+            // columnHeader6
+            // 
+            this.columnHeader6.Text = "Id";
+            // 
+            // columnHeader10
+            // 
+            this.columnHeader10.Text = "Id";
+            // 
+            // refreshData
+            // 
+            this.refreshData.Location = new System.Drawing.Point(1034, 145);
+            this.refreshData.Name = "refreshData";
+            this.refreshData.Size = new System.Drawing.Size(130, 32);
+            this.refreshData.TabIndex = 6;
+            this.refreshData.Text = "Обновить данные";
+            this.refreshData.UseVisualStyleBackColor = true;
+            this.refreshData.Click += new System.EventHandler(this.refreshData_Click);
+            // 
             // UserForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1264, 681);
+            this.Controls.Add(this.refreshData);
             this.Controls.Add(this.driversGrBox);
             this.Controls.Add(this.executingOrdersGrBox);
             this.Controls.Add(this.acceptedOrdersGrBox);
@@ -287,5 +317,9 @@
         private System.Windows.Forms.ColumnHeader columnHeader16;
         private System.Windows.Forms.ColumnHeader columnHeader17;
         private System.Windows.Forms.ColumnHeader columnHeader18;
+        private System.Windows.Forms.ColumnHeader columnHeader3;
+        private System.Windows.Forms.ColumnHeader columnHeader6;
+        private System.Windows.Forms.ColumnHeader columnHeader10;
+        private System.Windows.Forms.Button refreshData;
     }
 }

@@ -50,11 +50,11 @@ namespace SimpleTaxiControlLibrary
             }
         }
 
-        public static List<Order> GetFreeOrders() => OrdersList.Where(o => o.Status == (int)OrderStatuses.Free).ToList();
+        public static List<Order> GetFreeOrders() => OrdersList.Where(o => o.Status == OrderStatuses.Free).ToList();
 
-        public static List<Order> GetAcceptedOrders() => OrdersList.Where(o => o.Status == (int)OrderStatuses.Accepted).ToList();
+        public static List<Order> GetAcceptedOrders() => OrdersList.Where(o => o.Status == OrderStatuses.Accepted).ToList();
 
-        public static List<Order> GetInProgressOrders() => OrdersList.Where(o => o.Status == (int)OrderStatuses.InProgress).ToList();
+        public static List<Order> GetInProgressOrders() => OrdersList.Where(o => o.Status == OrderStatuses.InProgress).ToList();
 
         public static List<Order> GetAllOrders() => OrdersList;
 

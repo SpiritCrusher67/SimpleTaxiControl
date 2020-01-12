@@ -22,13 +22,36 @@ namespace SimpleTaxiControlLibrary
 
         public string Comment { get; set; }
 
-        public int Status { get; set; }
+        public OrderStatuses Status { get; set; }
 
         public Call Call { get; set; }
 
         public int Id { get; private set; }
 
         public Driver Driver { get; set; }
+
+        private SqlParameter[] GetSqlParametrs() => new SqlParameter[]
+        {
+            new SqlParameter("@Id", Id),
+
+            new SqlParameter("@AddressFrom", AddressFrom),
+
+            new SqlParameter("@NumberFrom", NumberFrom),
+
+            new SqlParameter("@AddressTo", AddressTo),
+
+            new SqlParameter("@NumberTo", NumberTo),
+
+            new SqlParameter("@Date", Date),
+
+            new SqlParameter("@Comment", Comment),
+
+            new SqlParameter("@Status", Status),
+
+            new SqlParameter("@CallId", Call.Id)
+
+        }; 
+
 
         public Order(string addressFrom, string numberFrom, string addressTo, string numberTo, DateTime date, string comment, Call call)
         {
@@ -44,7 +67,7 @@ namespace SimpleTaxiControlLibrary
 
             Comment = comment;
 
-            Status = (int)OrderStatuses.Free;
+            Status = OrderStatuses.Free;
 
             Call = call;
 
@@ -56,23 +79,10 @@ namespace SimpleTaxiControlLibrary
             loadOrderFromDB(id);
         }
 
+
+
         private void SaveOrder()
         {
-            SqlParameter AddressFromParam = new SqlParameter("@AddressFrom", AddressFrom);
-
-            SqlParameter NumberFromParam = new SqlParameter("@NumberFrom", NumberFrom);
-
-            SqlParameter AddressToParam = new SqlParameter("@AddressTo", AddressTo);
-
-            SqlParameter NumberToParam = new SqlParameter("@NumberTo", NumberTo);
-
-            SqlParameter DateParam = new SqlParameter("@Date", Date);
-
-            SqlParameter CommentParam = new SqlParameter("@Comment", Comment);
-
-            SqlParameter StatusParam = new SqlParameter("@Status", Status);
-
-            SqlParameter CallIdParam = new SqlParameter("@CallId", Call.Id);
 
             SqlParameter idParam = new SqlParameter
             {
@@ -93,18 +103,9 @@ namespace SimpleTaxiControlLibrary
 
                 SqlCommand command = new SqlCommand(query, connection);
 
-                command.Parameters.AddRange(new SqlParameter[]
-                {
-                    AddressFromParam,
-                    NumberFromParam,
-                    AddressToParam,
-                    NumberToParam,
-                    DateParam,
-                    CommentParam,
-                    StatusParam,
-                    CallIdParam,
-                    idParam
-                });
+                command.Parameters.Add(idParam);
+
+                command.Parameters.AddRange(GetSqlParametrs());
 
                 command.ExecuteNonQuery();
             }
@@ -131,18 +132,57 @@ namespace SimpleTaxiControlLibrary
                 {
                     if (reader.Read())
                     {
+                        Id = reader.GetInt32(0); 
                         AddressFrom = reader.GetString(1);
                         NumberFrom = reader.GetString(2);
                         AddressTo = reader.GetString(3);
                         NumberTo = reader.GetString(4);
                         Date = reader.GetDateTime(5);
-                        Status = reader.GetInt32(6);
+                        Status = (OrderStatuses)reader.GetInt32(6);
                         Call = new Call(reader.GetInt32(7));
                         Comment = reader.GetValue(8).ToString();
                         Driver = (reader.GetValue(9).ToString() != string.Empty) ? new Driver(reader.GetInt32(9)) : null;
 
                     }
                 }
+            }
+        }
+
+        public void SaveDriver()
+        {
+            string query = @"update Orders set 
+                DriverId = @DriverId
+                where Id = @Id";
+            Save(query,new SqlParameter[] { new SqlParameter("@DriverId",Driver.Id), new SqlParameter("@Id", Id) });
+        }
+
+        public void SaveChanges()
+        {
+            string query = @"update Orders set 
+                AddressFrom = @AddressFrom,
+                NumberFrom = @NumberFrom,
+                AddressTo = @AddressTo,
+                NumberTo = @NumberTo,
+                Date = @Date,
+                Status = @Status,
+                CallId = @CallId,
+                Comment = @Comment
+                where Id = @Id";
+            Save(query, GetSqlParametrs());
+        }
+
+        private void Save(string query,SqlParameter[] parameters)
+        {
+
+            using (SqlConnection connection = new SqlConnection(DBConnection.ConnectionString))
+            {
+                connection.Open();
+
+                SqlCommand command = new SqlCommand(query, connection);
+
+                command.Parameters.AddRange(parameters);
+
+                command.ExecuteNonQuery();
             }
         }
     }

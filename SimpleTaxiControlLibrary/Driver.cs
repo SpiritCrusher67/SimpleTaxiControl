@@ -8,7 +8,8 @@ using System.Data.SqlClient;
 namespace SimpleTaxiControlLibrary
 {
      public class Driver
-    {
+     {
+
         public int Id { get; set; }
 
         public string Model { get; set; }
@@ -16,6 +17,17 @@ namespace SimpleTaxiControlLibrary
         public string Name { get; set; }
 
         public DriverStatuses Status { get; set; }
+
+        private SqlParameter[] GetSqlParametrs() => new SqlParameter[]
+        {
+            new SqlParameter("@Id",Id),
+
+            new SqlParameter("@Model",Model),
+
+            new SqlParameter("@Name",Name),
+
+            new SqlParameter("@Status",Status)
+        };
 
         public Driver(int id)
         {
@@ -52,5 +64,24 @@ namespace SimpleTaxiControlLibrary
             }
         }
 
+        public void SaveChanges()
+        {
+            string query = @"update Drivers set 
+                Model = @Model,
+                Name = @Name,
+                Status = @Status
+                where Id = @Id";
+
+            using (SqlConnection connection = new SqlConnection(DBConnection.ConnectionString))
+            {
+                connection.Open();
+
+                SqlCommand command = new SqlCommand(query, connection);
+
+                command.Parameters.AddRange(GetSqlParametrs());
+
+                command.ExecuteNonQuery();
+            }
+        }
     }
 }
