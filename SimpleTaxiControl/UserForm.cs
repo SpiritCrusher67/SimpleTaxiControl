@@ -117,11 +117,14 @@ namespace SimpleTaxiControl
 
         private void takeСallBtn_Click(object sender, EventArgs e)
         {
-            incomingCallsListBox.Items.Remove(incomingCallsListBox.SelectedItem);
+            if (incomingCallsListBox.SelectedItem != null)
+            {
+                Call call = new Call(incomingCallsListBox.SelectedItem.ToString(), CurentUser);
+                incomingCallsListBox.Items.Remove(incomingCallsListBox.SelectedItem);
+                new TakeCallForm(call).Show();
 
-            Call call = new Call(incomingCallsListBox.SelectedItem.ToString(), CurentUser);
+            }
 
-            new TakeCallForm(call).Show();
         }
 
         private void LoadData()

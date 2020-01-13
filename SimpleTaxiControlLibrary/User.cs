@@ -61,5 +61,34 @@ namespace SimpleTaxiControlLibrary
                 }
             }
         }
+
+        public static List<User> GetAllUsersFromDB()
+        {
+            List<string> logins = new List<string>();
+
+            List<User> users = new List<User>();
+
+            string query = "select Login from Users";
+
+            using (SqlConnection connection = new SqlConnection(DBConnection.ConnectionString))
+            {
+                connection.Open();
+
+                using (SqlDataReader reader = new SqlCommand(query, connection).ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        logins.Add(reader.GetString(0));
+                    }
+                }
+            }
+
+            foreach (string login in logins)
+            {
+                users.Add(User.GetUser(login));
+            }
+
+            return users;
+        }
     }
 }

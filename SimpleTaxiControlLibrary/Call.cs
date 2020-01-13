@@ -88,5 +88,34 @@ namespace SimpleTaxiControlLibrary
                 }
             }
         }
+
+        public static List<Call> GetAllCallsFromDB()
+        {
+            List<int> ids = new List<int>();
+
+            List<Call> calls = new List<Call>();
+
+            string query = "select Id from Calls";
+
+            using (SqlConnection connection = new SqlConnection(DBConnection.ConnectionString))
+            {
+                connection.Open();
+
+                using (SqlDataReader reader = new SqlCommand(query, connection).ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        ids.Add(reader.GetInt32(0));
+                    }
+                }
+            }
+
+            foreach (int id in ids)
+            {
+                calls.Add(new Call(id));
+            }
+
+            return calls;
+        }
     }
 }

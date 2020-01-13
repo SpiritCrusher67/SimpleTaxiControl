@@ -18,7 +18,7 @@ namespace SimpleTaxiControl
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            Context = new ApplicationContext(new AuthorizationForm());
+            Context = new ApplicationContext(new AdminForm());
             Application.Run(Context);
         }
     }

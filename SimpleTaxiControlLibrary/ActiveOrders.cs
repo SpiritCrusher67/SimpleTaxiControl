@@ -19,7 +19,7 @@ namespace SimpleTaxiControlLibrary
                 {
                     _ordersList = new List<Order>();
 
-                    LoadActiveOrders();
+                    LoadOrders();
                 }
 
 
@@ -29,10 +29,9 @@ namespace SimpleTaxiControlLibrary
             set => _ordersList = value;
         }
 
-        private static void LoadActiveOrders()
+        private static void LoadOrders()
         {
-            string query = $@"select id from Orders 
-                where Status != '{(int)OrderStatuses.Сompleted}'";
+            string query = $@"select id from Orders";
 
             using (SqlConnection connection = new SqlConnection(DBConnection.ConnectionString))
             {
