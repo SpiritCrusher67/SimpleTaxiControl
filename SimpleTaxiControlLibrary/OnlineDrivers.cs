@@ -30,8 +30,7 @@ namespace SimpleTaxiControlLibrary
 
         private static void LoadActiveDrivers()
         {
-            string query = $@"select id from Drivers 
-                where Status != '{(int)OrderStatuses.Сompleted}'";
+            string query = $@"select id from Drivers";
 
             using (SqlConnection connection = new SqlConnection(DBConnection.ConnectionString))
             {
@@ -48,6 +47,8 @@ namespace SimpleTaxiControlLibrary
                 }
             }
         }
+
+        public static List<Driver> GetAllDrivers() => DriversList;
 
         public static List<Driver> GetOnlineDrivers() => DriversList.Where(d => d.Status != DriverStatuses.Offline).ToList();
 

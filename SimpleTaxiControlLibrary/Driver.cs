@@ -83,5 +83,30 @@ namespace SimpleTaxiControlLibrary
                 command.ExecuteNonQuery();
             }
         }
+
+        public static int SaveDriverInDb(string name, string model)
+        {
+            int rowsInvolved = 0;
+            string query = "insert into Drivers (Name,Model,Status) values (@Name,@Model,@Status)";
+
+            using (SqlConnection connection = new SqlConnection(DBConnection.ConnectionString))
+            {
+                connection.Open();
+
+                SqlCommand command = new SqlCommand(query, connection);
+
+                command.Parameters.AddRange(new SqlParameter[]
+                {
+                    new SqlParameter("@Name",name),
+                    new SqlParameter("@Model",model),
+                    new SqlParameter("@Status",DriverStatuses.Free)
+
+                });
+                try { rowsInvolved = command.ExecuteNonQuery(); }
+                catch { }
+
+                return rowsInvolved;
+            }
+        }
     }
 }

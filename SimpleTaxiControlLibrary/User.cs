@@ -85,10 +85,49 @@ namespace SimpleTaxiControlLibrary
 
             foreach (string login in logins)
             {
-                users.Add(User.GetUser(login));
+                users.Add(GetUser(login));
             }
 
             return users;
+        }
+
+        public static int SaveUserInDb(string login, string password, string name)
+        {
+            int rowsInvolved = 0;
+            string query = "insert into Users (Login,Password,Name) values (@Login,@Password,@Name)";
+
+            using (SqlConnection connection = new SqlConnection(DBConnection.ConnectionString))
+            {
+                connection.Open();
+
+                SqlCommand command = new SqlCommand(query,connection);
+
+                command.Parameters.AddRange(new SqlParameter[]
+                {
+                    new SqlParameter("@Login",login),
+                    new SqlParameter("@Password",password),
+                    new SqlParameter("@Name",name),
+
+                });
+                try { rowsInvolved = command.ExecuteNonQuery(); }
+                catch { }
+
+                return rowsInvolved;
+            }
+        }
+
+        public static string GetRandomPassword(int symbols)
+        {
+            string password = "";
+
+            Random random = new Random();
+
+            for (int i = 0; i < symbols; i++)
+            {
+                password += char.ConvertFromUtf32(random.Next(48, 122));
+            }
+
+            return password;
         }
     }
 }
