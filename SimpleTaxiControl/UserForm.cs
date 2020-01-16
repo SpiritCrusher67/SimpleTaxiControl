@@ -52,7 +52,11 @@ namespace SimpleTaxiControl
             inProgresOrdersMenu.Items.Add("Установить статус \"Выполнен\"", new Bitmap(23, 32), SetOrderCompleted);
 
             executingOrdersListView.ContextMenuStrip = inProgresOrdersMenu;
+
+            menuRefresh.Click += MenuRefresh_Click;
         }
+
+        private void MenuRefresh_Click(object sender, EventArgs e) => LoadData();
 
         private void SetDriver(object sender, EventArgs e)
         {
@@ -129,6 +133,9 @@ namespace SimpleTaxiControl
 
         private void LoadData()
         {
+            ClearData();
+
+
             foreach (Order order in Order.GetFreeOrders())
             {
                 freeOrdersListView.Items.Add(new ListViewItem(new string[] { order.Id.ToString(), order.AddressFrom, order.AddressTo }));
@@ -165,9 +172,7 @@ namespace SimpleTaxiControl
 
         private void refreshData_Click(object sender, EventArgs e)
         {
-            ClearData();
 
-            LoadData();
         }
     }
 }

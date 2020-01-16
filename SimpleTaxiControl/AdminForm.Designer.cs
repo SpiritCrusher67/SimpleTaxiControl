@@ -79,8 +79,10 @@
             this.usersListView = new System.Windows.Forms.ListView();
             this.columnHeader17 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader18 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.usersContMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.usersContMenuRefresh = new System.Windows.Forms.ToolStripMenuItem();
+            this.usersContMenuShowPassword = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.createDriverBtn = new System.Windows.Forms.Button();
             this.driverStatus = new System.Windows.Forms.ComboBox();
@@ -99,8 +101,7 @@
             this.columnHeader20 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.driversContMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.driversContMenuRefresh = new System.Windows.Forms.ToolStripMenuItem();
-            this.usersContMenuShowPassword = new System.Windows.Forms.ToolStripMenuItem();
-            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.userNameLabel = new System.Windows.Forms.Label();
             this.callsGrBox.SuspendLayout();
             this.callsContMenu.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -123,9 +124,12 @@
             this.callsGrBox.Controls.Add(this.idTextBox);
             this.callsGrBox.Controls.Add(this.label1);
             this.callsGrBox.Controls.Add(this.callsListView);
-            this.callsGrBox.Location = new System.Drawing.Point(12, 12);
+            this.callsGrBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(178)))), ((int)(((byte)(115)))));
+            this.callsGrBox.Location = new System.Drawing.Point(591, 32);
+            this.callsGrBox.Margin = new System.Windows.Forms.Padding(4);
             this.callsGrBox.Name = "callsGrBox";
-            this.callsGrBox.Size = new System.Drawing.Size(506, 210);
+            this.callsGrBox.Padding = new System.Windows.Forms.Padding(4);
+            this.callsGrBox.Size = new System.Drawing.Size(883, 323);
             this.callsGrBox.TabIndex = 4;
             this.callsGrBox.TabStop = false;
             this.callsGrBox.Text = "Звонки";
@@ -133,9 +137,10 @@
             // dataCheckBox
             // 
             this.dataCheckBox.AutoSize = true;
-            this.dataCheckBox.Location = new System.Drawing.Point(6, 46);
+            this.dataCheckBox.Location = new System.Drawing.Point(334, 21);
+            this.dataCheckBox.Margin = new System.Windows.Forms.Padding(4);
             this.dataCheckBox.Name = "dataCheckBox";
-            this.dataCheckBox.Size = new System.Drawing.Size(55, 17);
+            this.dataCheckBox.Size = new System.Drawing.Size(63, 23);
             this.dataCheckBox.TabIndex = 12;
             this.dataCheckBox.Text = "Дата:";
             this.dataCheckBox.UseVisualStyleBackColor = true;
@@ -143,12 +148,17 @@
             // 
             // callsSearchBtn
             // 
-            this.callsSearchBtn.Location = new System.Drawing.Point(163, 42);
+            this.callsSearchBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(150)))), ((int)(((byte)(64)))));
+            this.callsSearchBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.callsSearchBtn.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.callsSearchBtn.ForeColor = System.Drawing.Color.Black;
+            this.callsSearchBtn.Location = new System.Drawing.Point(334, 54);
+            this.callsSearchBtn.Margin = new System.Windows.Forms.Padding(4);
             this.callsSearchBtn.Name = "callsSearchBtn";
-            this.callsSearchBtn.Size = new System.Drawing.Size(87, 23);
+            this.callsSearchBtn.Size = new System.Drawing.Size(204, 34);
             this.callsSearchBtn.TabIndex = 11;
             this.callsSearchBtn.Text = "Поиск";
-            this.callsSearchBtn.UseVisualStyleBackColor = true;
+            this.callsSearchBtn.UseVisualStyleBackColor = false;
             this.callsSearchBtn.Click += new System.EventHandler(this.callsSearchBtn_Click);
             // 
             // datePicker
@@ -156,57 +166,64 @@
             this.datePicker.CustomFormat = "dd.MM.yyyy";
             this.datePicker.Enabled = false;
             this.datePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.datePicker.Location = new System.Drawing.Point(67, 45);
+            this.datePicker.Location = new System.Drawing.Point(405, 20);
+            this.datePicker.Margin = new System.Windows.Forms.Padding(4);
             this.datePicker.Name = "datePicker";
-            this.datePicker.Size = new System.Drawing.Size(90, 20);
+            this.datePicker.Size = new System.Drawing.Size(133, 26);
             this.datePicker.TabIndex = 10;
             // 
             // userCombobox
             // 
             this.userCombobox.FormattingEnabled = true;
-            this.userCombobox.Location = new System.Drawing.Point(328, 13);
+            this.userCombobox.Location = new System.Drawing.Point(146, 61);
+            this.userCombobox.Margin = new System.Windows.Forms.Padding(4);
             this.userCombobox.Name = "userCombobox";
-            this.userCombobox.Size = new System.Drawing.Size(121, 21);
+            this.userCombobox.Size = new System.Drawing.Size(180, 27);
             this.userCombobox.TabIndex = 8;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(239, 16);
+            this.label3.Location = new System.Drawing.Point(34, 64);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(83, 13);
+            this.label3.Size = new System.Drawing.Size(104, 19);
             this.label3.TabIndex = 7;
             this.label3.Text = "Пользователь:";
             // 
             // numberTextBox
             // 
-            this.numberTextBox.Location = new System.Drawing.Point(146, 13);
+            this.numberTextBox.Location = new System.Drawing.Point(198, 19);
+            this.numberTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.numberTextBox.Name = "numberTextBox";
-            this.numberTextBox.Size = new System.Drawing.Size(87, 20);
+            this.numberTextBox.Size = new System.Drawing.Size(128, 26);
             this.numberTextBox.TabIndex = 6;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(96, 16);
+            this.label2.Location = new System.Drawing.Point(134, 23);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(44, 13);
+            this.label2.Size = new System.Drawing.Size(56, 19);
             this.label2.TabIndex = 5;
             this.label2.Text = "Номер:";
             // 
             // idTextBox
             // 
-            this.idTextBox.Location = new System.Drawing.Point(31, 13);
+            this.idTextBox.Location = new System.Drawing.Point(46, 19);
+            this.idTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.idTextBox.Name = "idTextBox";
-            this.idTextBox.Size = new System.Drawing.Size(55, 20);
+            this.idTextBox.Size = new System.Drawing.Size(80, 26);
             this.idTextBox.TabIndex = 2;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 16);
+            this.label1.Location = new System.Drawing.Point(9, 23);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(19, 13);
+            this.label1.Size = new System.Drawing.Size(25, 19);
             this.label1.TabIndex = 1;
             this.label1.Text = "Id:";
             // 
@@ -219,9 +236,10 @@
             this.columnHeader3});
             this.callsListView.ContextMenuStrip = this.callsContMenu;
             this.callsListView.FullRowSelect = true;
-            this.callsListView.Location = new System.Drawing.Point(6, 71);
+            this.callsListView.Location = new System.Drawing.Point(13, 96);
+            this.callsListView.Margin = new System.Windows.Forms.Padding(4);
             this.callsListView.Name = "callsListView";
-            this.callsListView.Size = new System.Drawing.Size(492, 133);
+            this.callsListView.Size = new System.Drawing.Size(862, 219);
             this.callsListView.TabIndex = 0;
             this.callsListView.UseCompatibleStateImageBehavior = false;
             this.callsListView.View = System.Windows.Forms.View.Details;
@@ -233,17 +251,17 @@
             // columnHeader1
             // 
             this.columnHeader1.Text = "Номер";
-            this.columnHeader1.Width = 130;
+            this.columnHeader1.Width = 208;
             // 
             // columnHeader2
             // 
             this.columnHeader2.Text = "Пользователь";
-            this.columnHeader2.Width = 170;
+            this.columnHeader2.Width = 307;
             // 
             // columnHeader3
             // 
             this.columnHeader3.Text = "Дата";
-            this.columnHeader3.Width = 118;
+            this.columnHeader3.Width = 163;
             // 
             // callsContMenu
             // 
@@ -273,35 +291,41 @@
             this.groupBox1.Controls.Add(this.orderId);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.ordersListView);
-            this.groupBox1.Location = new System.Drawing.Point(524, 12);
+            this.groupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(178)))), ((int)(((byte)(115)))));
+            this.groupBox1.Location = new System.Drawing.Point(591, 363);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(615, 210);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox1.Size = new System.Drawing.Size(883, 323);
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Заказы";
             // 
             // orderDriverId
             // 
-            this.orderDriverId.Location = new System.Drawing.Point(328, 13);
+            this.orderDriverId.Location = new System.Drawing.Point(465, 18);
+            this.orderDriverId.Margin = new System.Windows.Forms.Padding(4);
             this.orderDriverId.Name = "orderDriverId";
-            this.orderDriverId.Size = new System.Drawing.Size(87, 20);
+            this.orderDriverId.Size = new System.Drawing.Size(128, 26);
             this.orderDriverId.TabIndex = 14;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(253, 16);
+            this.label7.Location = new System.Drawing.Point(366, 21);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(69, 13);
+            this.label7.Size = new System.Drawing.Size(91, 19);
             this.label7.TabIndex = 13;
             this.label7.Text = "Id водителя:";
             // 
             // orderDateCheckBox
             // 
             this.orderDateCheckBox.AutoSize = true;
-            this.orderDateCheckBox.Location = new System.Drawing.Point(6, 46);
+            this.orderDateCheckBox.Location = new System.Drawing.Point(8, 53);
+            this.orderDateCheckBox.Margin = new System.Windows.Forms.Padding(4);
             this.orderDateCheckBox.Name = "orderDateCheckBox";
-            this.orderDateCheckBox.Size = new System.Drawing.Size(55, 17);
+            this.orderDateCheckBox.Size = new System.Drawing.Size(63, 23);
             this.orderDateCheckBox.TabIndex = 12;
             this.orderDateCheckBox.Text = "Дата:";
             this.orderDateCheckBox.UseVisualStyleBackColor = true;
@@ -309,12 +333,17 @@
             // 
             // orderSearchBtn
             // 
-            this.orderSearchBtn.Location = new System.Drawing.Point(163, 42);
+            this.orderSearchBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(150)))), ((int)(((byte)(64)))));
+            this.orderSearchBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.orderSearchBtn.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.orderSearchBtn.ForeColor = System.Drawing.Color.Black;
+            this.orderSearchBtn.Location = new System.Drawing.Point(465, 48);
+            this.orderSearchBtn.Margin = new System.Windows.Forms.Padding(4);
             this.orderSearchBtn.Name = "orderSearchBtn";
-            this.orderSearchBtn.Size = new System.Drawing.Size(87, 23);
+            this.orderSearchBtn.Size = new System.Drawing.Size(130, 34);
             this.orderSearchBtn.TabIndex = 11;
             this.orderSearchBtn.Text = "Поиск";
-            this.orderSearchBtn.UseVisualStyleBackColor = true;
+            this.orderSearchBtn.UseVisualStyleBackColor = false;
             this.orderSearchBtn.Click += new System.EventHandler(this.orderSearchBtn_Click);
             // 
             // orderDate
@@ -322,9 +351,10 @@
             this.orderDate.CustomFormat = "dd.MM.yyyy";
             this.orderDate.Enabled = false;
             this.orderDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.orderDate.Location = new System.Drawing.Point(67, 45);
+            this.orderDate.Location = new System.Drawing.Point(79, 50);
+            this.orderDate.Margin = new System.Windows.Forms.Padding(4);
             this.orderDate.Name = "orderDate";
-            this.orderDate.Size = new System.Drawing.Size(90, 20);
+            this.orderDate.Size = new System.Drawing.Size(124, 26);
             this.orderDate.TabIndex = 10;
             // 
             // orderStatus
@@ -337,49 +367,55 @@
             "Принят",
             "Выполняется",
             "Выполнен"});
-            this.orderStatus.Location = new System.Drawing.Point(471, 13);
+            this.orderStatus.Location = new System.Drawing.Point(277, 53);
+            this.orderStatus.Margin = new System.Windows.Forms.Padding(4);
             this.orderStatus.Name = "orderStatus";
-            this.orderStatus.Size = new System.Drawing.Size(121, 21);
+            this.orderStatus.Size = new System.Drawing.Size(180, 27);
             this.orderStatus.TabIndex = 8;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(421, 16);
+            this.label4.Location = new System.Drawing.Point(211, 54);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(44, 13);
+            this.label4.Size = new System.Drawing.Size(58, 19);
             this.label4.TabIndex = 7;
             this.label4.Text = "Статус:";
             // 
             // orderCallId
             // 
-            this.orderCallId.Location = new System.Drawing.Point(163, 13);
+            this.orderCallId.Location = new System.Drawing.Point(230, 18);
+            this.orderCallId.Margin = new System.Windows.Forms.Padding(4);
             this.orderCallId.Name = "orderCallId";
-            this.orderCallId.Size = new System.Drawing.Size(87, 20);
+            this.orderCallId.Size = new System.Drawing.Size(128, 26);
             this.orderCallId.TabIndex = 6;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(96, 16);
+            this.label5.Location = new System.Drawing.Point(148, 21);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(58, 13);
+            this.label5.Size = new System.Drawing.Size(74, 19);
             this.label5.TabIndex = 5;
             this.label5.Text = "Id звонка:";
             // 
             // orderId
             // 
-            this.orderId.Location = new System.Drawing.Point(31, 13);
+            this.orderId.Location = new System.Drawing.Point(60, 18);
+            this.orderId.Margin = new System.Windows.Forms.Padding(4);
             this.orderId.Name = "orderId";
-            this.orderId.Size = new System.Drawing.Size(55, 20);
+            this.orderId.Size = new System.Drawing.Size(80, 26);
             this.orderId.TabIndex = 2;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(6, 16);
+            this.label6.Location = new System.Drawing.Point(27, 21);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(19, 13);
+            this.label6.Size = new System.Drawing.Size(25, 19);
             this.label6.TabIndex = 1;
             this.label6.Text = "Id:";
             // 
@@ -396,9 +432,10 @@
             this.columnHeader15});
             this.ordersListView.ContextMenuStrip = this.ordersContMenu;
             this.ordersListView.FullRowSelect = true;
-            this.ordersListView.Location = new System.Drawing.Point(6, 71);
+            this.ordersListView.Location = new System.Drawing.Point(9, 104);
+            this.ordersListView.Margin = new System.Windows.Forms.Padding(4);
             this.ordersListView.Name = "ordersListView";
-            this.ordersListView.Size = new System.Drawing.Size(603, 133);
+            this.ordersListView.Size = new System.Drawing.Size(861, 211);
             this.ordersListView.TabIndex = 0;
             this.ordersListView.UseCompatibleStateImageBehavior = false;
             this.ordersListView.View = System.Windows.Forms.View.Details;
@@ -406,39 +443,42 @@
             // columnHeader4
             // 
             this.columnHeader4.Text = "Id";
+            this.columnHeader4.Width = 37;
             // 
             // columnHeader9
             // 
             this.columnHeader9.Text = "Откуда";
-            this.columnHeader9.Width = 84;
+            this.columnHeader9.Width = 129;
             // 
             // columnHeader10
             // 
             this.columnHeader10.Text = "Куда";
-            this.columnHeader10.Width = 89;
+            this.columnHeader10.Width = 139;
             // 
             // columnHeader11
             // 
             this.columnHeader11.Text = "Дата";
-            this.columnHeader11.Width = 86;
+            this.columnHeader11.Width = 111;
             // 
             // columnHeader12
             // 
             this.columnHeader12.Text = "Статус";
+            this.columnHeader12.Width = 119;
             // 
             // columnHeader13
             // 
             this.columnHeader13.Text = "Id звонка";
+            this.columnHeader13.Width = 79;
             // 
             // columnHeader14
             // 
             this.columnHeader14.Text = "Комментарий";
-            this.columnHeader14.Width = 87;
+            this.columnHeader14.Width = 115;
             // 
             // columnHeader15
             // 
             this.columnHeader15.Text = "Id водителя";
-            this.columnHeader15.Width = 72;
+            this.columnHeader15.Width = 92;
             // 
             // ordersContMenu
             // 
@@ -462,62 +502,79 @@
             this.groupBox2.Controls.Add(this.userLogin);
             this.groupBox2.Controls.Add(this.label10);
             this.groupBox2.Controls.Add(this.usersListView);
-            this.groupBox2.Location = new System.Drawing.Point(12, 228);
+            this.groupBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(178)))), ((int)(((byte)(115)))));
+            this.groupBox2.Location = new System.Drawing.Point(13, 32);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(462, 210);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox2.Size = new System.Drawing.Size(570, 323);
             this.groupBox2.TabIndex = 7;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Пользователи";
             // 
             // createUserBtn
             // 
-            this.createUserBtn.Location = new System.Drawing.Point(360, 9);
+            this.createUserBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(150)))), ((int)(((byte)(64)))));
+            this.createUserBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.createUserBtn.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.createUserBtn.ForeColor = System.Drawing.Color.Black;
+            this.createUserBtn.Location = new System.Drawing.Point(8, 279);
+            this.createUserBtn.Margin = new System.Windows.Forms.Padding(4);
             this.createUserBtn.Name = "createUserBtn";
-            this.createUserBtn.Size = new System.Drawing.Size(99, 47);
+            this.createUserBtn.Size = new System.Drawing.Size(550, 34);
             this.createUserBtn.TabIndex = 13;
             this.createUserBtn.Text = "Создать пользователя";
-            this.createUserBtn.UseVisualStyleBackColor = true;
+            this.createUserBtn.UseVisualStyleBackColor = false;
             this.createUserBtn.Click += new System.EventHandler(this.createUserBtn_Click);
             // 
             // userSearchBtn
             // 
-            this.userSearchBtn.Location = new System.Drawing.Point(245, 11);
+            this.userSearchBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(150)))), ((int)(((byte)(64)))));
+            this.userSearchBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.userSearchBtn.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.userSearchBtn.ForeColor = System.Drawing.Color.Black;
+            this.userSearchBtn.Location = new System.Drawing.Point(403, 15);
+            this.userSearchBtn.Margin = new System.Windows.Forms.Padding(4);
             this.userSearchBtn.Name = "userSearchBtn";
-            this.userSearchBtn.Size = new System.Drawing.Size(87, 23);
+            this.userSearchBtn.Size = new System.Drawing.Size(155, 34);
             this.userSearchBtn.TabIndex = 12;
             this.userSearchBtn.Text = "Поиск";
-            this.userSearchBtn.UseVisualStyleBackColor = true;
+            this.userSearchBtn.UseVisualStyleBackColor = false;
             this.userSearchBtn.Click += new System.EventHandler(this.userSearchBtn_Click);
             // 
             // userName
             // 
-            this.userName.Location = new System.Drawing.Point(152, 13);
+            this.userName.Location = new System.Drawing.Point(230, 20);
+            this.userName.Margin = new System.Windows.Forms.Padding(4);
             this.userName.Name = "userName";
-            this.userName.Size = new System.Drawing.Size(87, 20);
+            this.userName.Size = new System.Drawing.Size(165, 26);
             this.userName.TabIndex = 6;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(114, 16);
+            this.label9.Location = new System.Drawing.Point(182, 23);
+            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(32, 13);
+            this.label9.Size = new System.Drawing.Size(40, 19);
             this.label9.TabIndex = 5;
             this.label9.Text = "Имя:";
             // 
             // userLogin
             // 
-            this.userLogin.Location = new System.Drawing.Point(53, 14);
+            this.userLogin.Location = new System.Drawing.Point(71, 20);
+            this.userLogin.Margin = new System.Windows.Forms.Padding(4);
             this.userLogin.Name = "userLogin";
-            this.userLogin.Size = new System.Drawing.Size(55, 20);
+            this.userLogin.Size = new System.Drawing.Size(103, 26);
             this.userLogin.TabIndex = 2;
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(6, 16);
+            this.label10.Location = new System.Drawing.Point(8, 23);
+            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(41, 13);
+            this.label10.Size = new System.Drawing.Size(55, 19);
             this.label10.TabIndex = 1;
             this.label10.Text = "Логин:";
             // 
@@ -529,9 +586,10 @@
             this.columnHeader5});
             this.usersListView.ContextMenuStrip = this.usersContMenu;
             this.usersListView.FullRowSelect = true;
-            this.usersListView.Location = new System.Drawing.Point(6, 40);
+            this.usersListView.Location = new System.Drawing.Point(9, 58);
+            this.usersListView.Margin = new System.Windows.Forms.Padding(4);
             this.usersListView.Name = "usersListView";
-            this.usersListView.Size = new System.Drawing.Size(348, 164);
+            this.usersListView.Size = new System.Drawing.Size(549, 213);
             this.usersListView.TabIndex = 0;
             this.usersListView.UseCompatibleStateImageBehavior = false;
             this.usersListView.View = System.Windows.Forms.View.Details;
@@ -539,12 +597,17 @@
             // columnHeader17
             // 
             this.columnHeader17.Text = "Логин";
-            this.columnHeader17.Width = 118;
+            this.columnHeader17.Width = 142;
             // 
             // columnHeader18
             // 
             this.columnHeader18.Text = "Имя";
-            this.columnHeader18.Width = 216;
+            this.columnHeader18.Width = 212;
+            // 
+            // columnHeader5
+            // 
+            this.columnHeader5.Text = "Тип";
+            this.columnHeader5.Width = 131;
             // 
             // usersContMenu
             // 
@@ -557,8 +620,14 @@
             // usersContMenuRefresh
             // 
             this.usersContMenuRefresh.Name = "usersContMenuRefresh";
-            this.usersContMenuRefresh.Size = new System.Drawing.Size(180, 22);
+            this.usersContMenuRefresh.Size = new System.Drawing.Size(167, 22);
             this.usersContMenuRefresh.Text = "Обновить";
+            // 
+            // usersContMenuShowPassword
+            // 
+            this.usersContMenuShowPassword.Name = "usersContMenuShowPassword";
+            this.usersContMenuShowPassword.Size = new System.Drawing.Size(167, 22);
+            this.usersContMenuShowPassword.Text = "Показать пароль";
             // 
             // groupBox3
             // 
@@ -573,21 +642,29 @@
             this.groupBox3.Controls.Add(this.driverModel);
             this.groupBox3.Controls.Add(this.label11);
             this.groupBox3.Controls.Add(this.driversListView);
-            this.groupBox3.Location = new System.Drawing.Point(524, 228);
+            this.groupBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(178)))), ((int)(((byte)(115)))));
+            this.groupBox3.Location = new System.Drawing.Point(13, 363);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(433, 210);
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox3.Size = new System.Drawing.Size(570, 323);
             this.groupBox3.TabIndex = 8;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Водители";
             // 
             // createDriverBtn
             // 
-            this.createDriverBtn.Location = new System.Drawing.Point(277, 38);
+            this.createDriverBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(150)))), ((int)(((byte)(64)))));
+            this.createDriverBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.createDriverBtn.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.createDriverBtn.ForeColor = System.Drawing.Color.Black;
+            this.createDriverBtn.Location = new System.Drawing.Point(376, 56);
+            this.createDriverBtn.Margin = new System.Windows.Forms.Padding(4);
             this.createDriverBtn.Name = "createDriverBtn";
-            this.createDriverBtn.Size = new System.Drawing.Size(150, 23);
+            this.createDriverBtn.Size = new System.Drawing.Size(182, 34);
             this.createDriverBtn.TabIndex = 16;
             this.createDriverBtn.Text = "Создать водителя";
-            this.createDriverBtn.UseVisualStyleBackColor = true;
+            this.createDriverBtn.UseVisualStyleBackColor = false;
             this.createDriverBtn.Click += new System.EventHandler(this.createDriverBtn_Click);
             // 
             // driverStatus
@@ -599,75 +676,88 @@
             "Свободен",
             "Занят",
             "Не в сети"});
-            this.driverStatus.Location = new System.Drawing.Point(56, 40);
+            this.driverStatus.Location = new System.Drawing.Point(74, 61);
+            this.driverStatus.Margin = new System.Windows.Forms.Padding(4);
             this.driverStatus.Name = "driverStatus";
-            this.driverStatus.Size = new System.Drawing.Size(121, 21);
+            this.driverStatus.Size = new System.Drawing.Size(180, 27);
             this.driverStatus.TabIndex = 15;
             // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(6, 43);
+            this.label13.Location = new System.Drawing.Point(8, 64);
+            this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(44, 13);
+            this.label13.Size = new System.Drawing.Size(58, 19);
             this.label13.TabIndex = 14;
             this.label13.Text = "Статус:";
             // 
             // driverId
             // 
-            this.driverId.Location = new System.Drawing.Point(31, 12);
+            this.driverId.Location = new System.Drawing.Point(41, 18);
+            this.driverId.Margin = new System.Windows.Forms.Padding(4);
             this.driverId.Name = "driverId";
-            this.driverId.Size = new System.Drawing.Size(55, 20);
+            this.driverId.Size = new System.Drawing.Size(52, 26);
             this.driverId.TabIndex = 13;
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(6, 16);
+            this.label12.Location = new System.Drawing.Point(8, 23);
+            this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(19, 13);
+            this.label12.Size = new System.Drawing.Size(25, 19);
             this.label12.TabIndex = 12;
             this.label12.Text = "Id:";
             // 
             // driverSearchBtn
             // 
-            this.driverSearchBtn.Location = new System.Drawing.Point(340, 11);
+            this.driverSearchBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(150)))), ((int)(((byte)(64)))));
+            this.driverSearchBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.driverSearchBtn.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.driverSearchBtn.ForeColor = System.Drawing.Color.Black;
+            this.driverSearchBtn.Location = new System.Drawing.Point(262, 56);
+            this.driverSearchBtn.Margin = new System.Windows.Forms.Padding(4);
             this.driverSearchBtn.Name = "driverSearchBtn";
-            this.driverSearchBtn.Size = new System.Drawing.Size(87, 23);
+            this.driverSearchBtn.Size = new System.Drawing.Size(106, 34);
             this.driverSearchBtn.TabIndex = 11;
             this.driverSearchBtn.Text = "Поиск";
-            this.driverSearchBtn.UseVisualStyleBackColor = true;
+            this.driverSearchBtn.UseVisualStyleBackColor = false;
             this.driverSearchBtn.Click += new System.EventHandler(this.driverSearchBtn_Click);
             // 
             // driverName
             // 
-            this.driverName.Location = new System.Drawing.Point(246, 12);
+            this.driverName.Location = new System.Drawing.Point(358, 19);
+            this.driverName.Margin = new System.Windows.Forms.Padding(4);
             this.driverName.Name = "driverName";
-            this.driverName.Size = new System.Drawing.Size(87, 20);
+            this.driverName.Size = new System.Drawing.Size(200, 26);
             this.driverName.TabIndex = 6;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(208, 15);
+            this.label8.Location = new System.Drawing.Point(310, 22);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(32, 13);
+            this.label8.Size = new System.Drawing.Size(40, 19);
             this.label8.TabIndex = 5;
             this.label8.Text = "Имя:";
             // 
             // driverModel
             // 
-            this.driverModel.Location = new System.Drawing.Point(147, 13);
+            this.driverModel.Location = new System.Drawing.Point(173, 19);
+            this.driverModel.Margin = new System.Windows.Forms.Padding(4);
             this.driverModel.Name = "driverModel";
-            this.driverModel.Size = new System.Drawing.Size(55, 20);
+            this.driverModel.Size = new System.Drawing.Size(129, 26);
             this.driverModel.TabIndex = 2;
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(92, 16);
+            this.label11.Location = new System.Drawing.Point(101, 22);
+            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(49, 13);
+            this.label11.Size = new System.Drawing.Size(64, 19);
             this.label11.TabIndex = 1;
             this.label11.Text = "Модель:";
             // 
@@ -680,9 +770,10 @@
             this.columnHeader20});
             this.driversListView.ContextMenuStrip = this.driversContMenu;
             this.driversListView.FullRowSelect = true;
-            this.driversListView.Location = new System.Drawing.Point(9, 67);
+            this.driversListView.Location = new System.Drawing.Point(14, 98);
+            this.driversListView.Margin = new System.Windows.Forms.Padding(4);
             this.driversListView.Name = "driversListView";
-            this.driversListView.Size = new System.Drawing.Size(418, 136);
+            this.driversListView.Size = new System.Drawing.Size(544, 217);
             this.driversListView.TabIndex = 0;
             this.driversListView.UseCompatibleStateImageBehavior = false;
             this.driversListView.View = System.Windows.Forms.View.Details;
@@ -694,16 +785,17 @@
             // columnHeader16
             // 
             this.columnHeader16.Text = "Модель";
-            this.columnHeader16.Width = 99;
+            this.columnHeader16.Width = 138;
             // 
             // columnHeader19
             // 
             this.columnHeader19.Text = "Имя";
-            this.columnHeader19.Width = 114;
+            this.columnHeader19.Width = 173;
             // 
             // columnHeader20
             // 
             this.columnHeader20.Text = "Статус";
+            this.columnHeader20.Width = 127;
             // 
             // driversContMenu
             // 
@@ -718,28 +810,36 @@
             this.driversContMenuRefresh.Size = new System.Drawing.Size(128, 22);
             this.driversContMenuRefresh.Text = "Обновить";
             // 
-            // usersContMenuShowPassword
+            // userNameLabel
             // 
-            this.usersContMenuShowPassword.Name = "usersContMenuShowPassword";
-            this.usersContMenuShowPassword.Size = new System.Drawing.Size(180, 22);
-            this.usersContMenuShowPassword.Text = "Показать пароль";
-            // 
-            // columnHeader5
-            // 
-            this.columnHeader5.Text = "Тип";
-            this.columnHeader5.Width = 80;
+            this.userNameLabel.AutoSize = true;
+            this.userNameLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(178)))), ((int)(((byte)(115)))));
+            this.userNameLabel.Location = new System.Drawing.Point(13, 9);
+            this.userNameLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.userNameLabel.Name = "userNameLabel";
+            this.userNameLabel.Size = new System.Drawing.Size(108, 19);
+            this.userNameLabel.TabIndex = 9;
+            this.userNameLabel.Text = "Пользователь: ";
             // 
             // AdminForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1264, 681);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(75)))), ((int)(((byte)(0)))));
+            this.ClientSize = new System.Drawing.Size(1484, 691);
+            this.Controls.Add(this.userNameLabel);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.callsGrBox);
+            this.Controls.Add(this.groupBox1);
+            this.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(178)))), ((int)(((byte)(115)))));
+            this.Margin = new System.Windows.Forms.Padding(4);
+            this.MaximumSize = new System.Drawing.Size(1500, 730);
+            this.MinimumSize = new System.Drawing.Size(1500, 730);
             this.Name = "AdminForm";
-            this.Text = "AdminForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Меню администратора";
             this.Load += new System.EventHandler(this.AdminForm_Load);
             this.callsGrBox.ResumeLayout(false);
             this.callsGrBox.PerformLayout();
@@ -754,6 +854,7 @@
             this.groupBox3.PerformLayout();
             this.driversContMenu.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -831,5 +932,6 @@
         private System.Windows.Forms.ToolStripMenuItem driversContMenuRefresh;
         private System.Windows.Forms.ToolStripMenuItem usersContMenuShowPassword;
         private System.Windows.Forms.ColumnHeader columnHeader5;
+        private System.Windows.Forms.Label userNameLabel;
     }
 }

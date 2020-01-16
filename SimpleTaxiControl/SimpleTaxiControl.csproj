@@ -122,6 +122,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="TakeCallForm.resx">
       <DependentUpon>TakeCallForm.cs</DependentUpon>
@@ -147,6 +148,9 @@
       <Project>{b61f4ebd-38a0-4c12-86a1-31448469f5fe}</Project>
       <Name>SimpleTaxiControlLibrary</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logo1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

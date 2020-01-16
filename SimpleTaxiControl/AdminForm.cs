@@ -13,13 +13,13 @@ namespace SimpleTaxiControl
 {
     public partial class AdminForm : Form
     {
-        public User CurentUser { get; }
+        public User CurrentUser { get; }
 
         public AdminForm(User user)
         {
             InitializeComponent();
 
-            CurentUser = user;
+            CurrentUser = user;
         }
 
         private void AdminForm_Load(object sender, EventArgs e)
@@ -42,7 +42,9 @@ namespace SimpleTaxiControl
 
             usersContMenuShowPassword.Click += UsersContMenuShowPassword_Click;
 
-            driversContMenuRefresh.Click += DriversContMenuRefresh_Click; 
+            driversContMenuRefresh.Click += DriversContMenuRefresh_Click;
+
+            userNameLabel.Text += CurrentUser.Name;
 
         }
 
@@ -50,7 +52,7 @@ namespace SimpleTaxiControl
         {
             if (usersListView.SelectedItems.Count > 0)
             {
-                string password = User.GetUserPassword(usersListView.SelectedItems[0].Text,CurentUser);
+                string password = User.GetUserPassword(usersListView.SelectedItems[0].Text,CurrentUser);
 
                 if (MessageBox.Show($"Пароль: {password }\nСкопировать в буфер обмена?", "Пароль пользователя", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
