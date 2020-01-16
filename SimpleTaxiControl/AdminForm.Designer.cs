@@ -44,6 +44,8 @@
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.callsContMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.callsContMenuRefresh = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.orderDriverId = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -65,7 +67,11 @@
             this.columnHeader13 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader14 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader15 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.ordersContMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.ordersContMenuRefresh = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.createUserBtn = new System.Windows.Forms.Button();
+            this.userSearchBtn = new System.Windows.Forms.Button();
             this.userName = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.userLogin = new System.Windows.Forms.TextBox();
@@ -73,7 +79,14 @@
             this.usersListView = new System.Windows.Forms.ListView();
             this.columnHeader17 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader18 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.usersContMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.usersContMenuRefresh = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.createDriverBtn = new System.Windows.Forms.Button();
+            this.driverStatus = new System.Windows.Forms.ComboBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.driverId = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
             this.driverSearchBtn = new System.Windows.Forms.Button();
             this.driverName = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -84,28 +97,17 @@
             this.columnHeader16 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader19 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader20 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.driverId = new System.Windows.Forms.TextBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.driverStatus = new System.Windows.Forms.ComboBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.userSearchBtn = new System.Windows.Forms.Button();
-            this.createUserBtn = new System.Windows.Forms.Button();
-            this.createDriverBtn = new System.Windows.Forms.Button();
-            this.callsContMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.callsContMenuRefresh = new System.Windows.Forms.ToolStripMenuItem();
-            this.ordersContMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.ordersContMenuRefresh = new System.Windows.Forms.ToolStripMenuItem();
-            this.usersContMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.usersContMenuRefresh = new System.Windows.Forms.ToolStripMenuItem();
             this.driversContMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.driversContMenuRefresh = new System.Windows.Forms.ToolStripMenuItem();
+            this.usersContMenuShowPassword = new System.Windows.Forms.ToolStripMenuItem();
+            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.callsGrBox.SuspendLayout();
-            this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            this.groupBox3.SuspendLayout();
             this.callsContMenu.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.ordersContMenu.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.usersContMenu.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.driversContMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -242,6 +244,20 @@
             // 
             this.columnHeader3.Text = "Дата";
             this.columnHeader3.Width = 118;
+            // 
+            // callsContMenu
+            // 
+            this.callsContMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.callsContMenuRefresh});
+            this.callsContMenu.Name = "callsContMenu";
+            this.callsContMenu.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
+            this.callsContMenu.Size = new System.Drawing.Size(129, 26);
+            // 
+            // callsContMenuRefresh
+            // 
+            this.callsContMenuRefresh.Name = "callsContMenuRefresh";
+            this.callsContMenuRefresh.Size = new System.Drawing.Size(128, 22);
+            this.callsContMenuRefresh.Text = "Обновить";
             // 
             // groupBox1
             // 
@@ -424,6 +440,19 @@
             this.columnHeader15.Text = "Id водителя";
             this.columnHeader15.Width = 72;
             // 
+            // ordersContMenu
+            // 
+            this.ordersContMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ordersContMenuRefresh});
+            this.ordersContMenu.Name = "ordersContMenu";
+            this.ordersContMenu.Size = new System.Drawing.Size(129, 26);
+            // 
+            // ordersContMenuRefresh
+            // 
+            this.ordersContMenuRefresh.Name = "ordersContMenuRefresh";
+            this.ordersContMenuRefresh.Size = new System.Drawing.Size(128, 22);
+            this.ordersContMenuRefresh.Text = "Обновить";
+            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.createUserBtn);
@@ -439,6 +468,26 @@
             this.groupBox2.TabIndex = 7;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Пользователи";
+            // 
+            // createUserBtn
+            // 
+            this.createUserBtn.Location = new System.Drawing.Point(360, 9);
+            this.createUserBtn.Name = "createUserBtn";
+            this.createUserBtn.Size = new System.Drawing.Size(99, 47);
+            this.createUserBtn.TabIndex = 13;
+            this.createUserBtn.Text = "Создать пользователя";
+            this.createUserBtn.UseVisualStyleBackColor = true;
+            this.createUserBtn.Click += new System.EventHandler(this.createUserBtn_Click);
+            // 
+            // userSearchBtn
+            // 
+            this.userSearchBtn.Location = new System.Drawing.Point(245, 11);
+            this.userSearchBtn.Name = "userSearchBtn";
+            this.userSearchBtn.Size = new System.Drawing.Size(87, 23);
+            this.userSearchBtn.TabIndex = 12;
+            this.userSearchBtn.Text = "Поиск";
+            this.userSearchBtn.UseVisualStyleBackColor = true;
+            this.userSearchBtn.Click += new System.EventHandler(this.userSearchBtn_Click);
             // 
             // userName
             // 
@@ -476,7 +525,8 @@
             // 
             this.usersListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader17,
-            this.columnHeader18});
+            this.columnHeader18,
+            this.columnHeader5});
             this.usersListView.ContextMenuStrip = this.usersContMenu;
             this.usersListView.FullRowSelect = true;
             this.usersListView.Location = new System.Drawing.Point(6, 40);
@@ -495,6 +545,20 @@
             // 
             this.columnHeader18.Text = "Имя";
             this.columnHeader18.Width = 216;
+            // 
+            // usersContMenu
+            // 
+            this.usersContMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.usersContMenuRefresh,
+            this.usersContMenuShowPassword});
+            this.usersContMenu.Name = "usersContMenu";
+            this.usersContMenu.Size = new System.Drawing.Size(168, 48);
+            // 
+            // usersContMenuRefresh
+            // 
+            this.usersContMenuRefresh.Name = "usersContMenuRefresh";
+            this.usersContMenuRefresh.Size = new System.Drawing.Size(180, 22);
+            this.usersContMenuRefresh.Text = "Обновить";
             // 
             // groupBox3
             // 
@@ -515,6 +579,55 @@
             this.groupBox3.TabIndex = 8;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Водители";
+            // 
+            // createDriverBtn
+            // 
+            this.createDriverBtn.Location = new System.Drawing.Point(277, 38);
+            this.createDriverBtn.Name = "createDriverBtn";
+            this.createDriverBtn.Size = new System.Drawing.Size(150, 23);
+            this.createDriverBtn.TabIndex = 16;
+            this.createDriverBtn.Text = "Создать водителя";
+            this.createDriverBtn.UseVisualStyleBackColor = true;
+            this.createDriverBtn.Click += new System.EventHandler(this.createDriverBtn_Click);
+            // 
+            // driverStatus
+            // 
+            this.driverStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.driverStatus.FormattingEnabled = true;
+            this.driverStatus.Items.AddRange(new object[] {
+            "Все",
+            "Свободен",
+            "Занят",
+            "Не в сети"});
+            this.driverStatus.Location = new System.Drawing.Point(56, 40);
+            this.driverStatus.Name = "driverStatus";
+            this.driverStatus.Size = new System.Drawing.Size(121, 21);
+            this.driverStatus.TabIndex = 15;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(6, 43);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(44, 13);
+            this.label13.TabIndex = 14;
+            this.label13.Text = "Статус:";
+            // 
+            // driverId
+            // 
+            this.driverId.Location = new System.Drawing.Point(31, 12);
+            this.driverId.Name = "driverId";
+            this.driverId.Size = new System.Drawing.Size(55, 20);
+            this.driverId.TabIndex = 13;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(6, 16);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(19, 13);
+            this.label12.TabIndex = 12;
+            this.label12.Text = "Id:";
             // 
             // driverSearchBtn
             // 
@@ -592,114 +705,6 @@
             // 
             this.columnHeader20.Text = "Статус";
             // 
-            // driverId
-            // 
-            this.driverId.Location = new System.Drawing.Point(31, 12);
-            this.driverId.Name = "driverId";
-            this.driverId.Size = new System.Drawing.Size(55, 20);
-            this.driverId.TabIndex = 13;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(6, 16);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(19, 13);
-            this.label12.TabIndex = 12;
-            this.label12.Text = "Id:";
-            // 
-            // driverStatus
-            // 
-            this.driverStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.driverStatus.FormattingEnabled = true;
-            this.driverStatus.Items.AddRange(new object[] {
-            "Все",
-            "Свободен",
-            "Занят",
-            "Не в сети"});
-            this.driverStatus.Location = new System.Drawing.Point(56, 40);
-            this.driverStatus.Name = "driverStatus";
-            this.driverStatus.Size = new System.Drawing.Size(121, 21);
-            this.driverStatus.TabIndex = 15;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(6, 43);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(44, 13);
-            this.label13.TabIndex = 14;
-            this.label13.Text = "Статус:";
-            // 
-            // userSearchBtn
-            // 
-            this.userSearchBtn.Location = new System.Drawing.Point(245, 11);
-            this.userSearchBtn.Name = "userSearchBtn";
-            this.userSearchBtn.Size = new System.Drawing.Size(87, 23);
-            this.userSearchBtn.TabIndex = 12;
-            this.userSearchBtn.Text = "Поиск";
-            this.userSearchBtn.UseVisualStyleBackColor = true;
-            // 
-            // createUserBtn
-            // 
-            this.createUserBtn.Location = new System.Drawing.Point(360, 9);
-            this.createUserBtn.Name = "createUserBtn";
-            this.createUserBtn.Size = new System.Drawing.Size(99, 47);
-            this.createUserBtn.TabIndex = 13;
-            this.createUserBtn.Text = "Создать пользователя";
-            this.createUserBtn.UseVisualStyleBackColor = true;
-            this.createUserBtn.Click += new System.EventHandler(this.createUserBtn_Click);
-            // 
-            // createDriverBtn
-            // 
-            this.createDriverBtn.Location = new System.Drawing.Point(277, 38);
-            this.createDriverBtn.Name = "createDriverBtn";
-            this.createDriverBtn.Size = new System.Drawing.Size(150, 23);
-            this.createDriverBtn.TabIndex = 16;
-            this.createDriverBtn.Text = "Создать водителя";
-            this.createDriverBtn.UseVisualStyleBackColor = true;
-            this.createDriverBtn.Click += new System.EventHandler(this.createDriverBtn_Click);
-            // 
-            // callsContMenu
-            // 
-            this.callsContMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.callsContMenuRefresh});
-            this.callsContMenu.Name = "callsContMenu";
-            this.callsContMenu.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.callsContMenu.Size = new System.Drawing.Size(129, 26);
-            // 
-            // callsContMenuRefresh
-            // 
-            this.callsContMenuRefresh.Name = "callsContMenuRefresh";
-            this.callsContMenuRefresh.Size = new System.Drawing.Size(128, 22);
-            this.callsContMenuRefresh.Text = "Обновить";
-            // 
-            // ordersContMenu
-            // 
-            this.ordersContMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ordersContMenuRefresh});
-            this.ordersContMenu.Name = "ordersContMenu";
-            this.ordersContMenu.Size = new System.Drawing.Size(129, 26);
-            // 
-            // ordersContMenuRefresh
-            // 
-            this.ordersContMenuRefresh.Name = "ordersContMenuRefresh";
-            this.ordersContMenuRefresh.Size = new System.Drawing.Size(128, 22);
-            this.ordersContMenuRefresh.Text = "Обновить";
-            // 
-            // usersContMenu
-            // 
-            this.usersContMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.usersContMenuRefresh});
-            this.usersContMenu.Name = "usersContMenu";
-            this.usersContMenu.Size = new System.Drawing.Size(129, 26);
-            // 
-            // usersContMenuRefresh
-            // 
-            this.usersContMenuRefresh.Name = "usersContMenuRefresh";
-            this.usersContMenuRefresh.Size = new System.Drawing.Size(128, 22);
-            this.usersContMenuRefresh.Text = "Обновить";
-            // 
             // driversContMenu
             // 
             this.driversContMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -712,6 +717,17 @@
             this.driversContMenuRefresh.Name = "driversContMenuRefresh";
             this.driversContMenuRefresh.Size = new System.Drawing.Size(128, 22);
             this.driversContMenuRefresh.Text = "Обновить";
+            // 
+            // usersContMenuShowPassword
+            // 
+            this.usersContMenuShowPassword.Name = "usersContMenuShowPassword";
+            this.usersContMenuShowPassword.Size = new System.Drawing.Size(180, 22);
+            this.usersContMenuShowPassword.Text = "Показать пароль";
+            // 
+            // columnHeader5
+            // 
+            this.columnHeader5.Text = "Тип";
+            this.columnHeader5.Width = 80;
             // 
             // AdminForm
             // 
@@ -727,15 +743,15 @@
             this.Load += new System.EventHandler(this.AdminForm_Load);
             this.callsGrBox.ResumeLayout(false);
             this.callsGrBox.PerformLayout();
+            this.callsContMenu.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.ordersContMenu.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.usersContMenu.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            this.callsContMenu.ResumeLayout(false);
-            this.ordersContMenu.ResumeLayout(false);
-            this.usersContMenu.ResumeLayout(false);
             this.driversContMenu.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -813,5 +829,7 @@
         private System.Windows.Forms.ToolStripMenuItem usersContMenuRefresh;
         private System.Windows.Forms.ContextMenuStrip driversContMenu;
         private System.Windows.Forms.ToolStripMenuItem driversContMenuRefresh;
+        private System.Windows.Forms.ToolStripMenuItem usersContMenuShowPassword;
+        private System.Windows.Forms.ColumnHeader columnHeader5;
     }
 }

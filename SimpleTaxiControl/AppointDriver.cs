@@ -50,6 +50,8 @@ namespace SimpleTaxiControl
 
                 currentOrder.SaveChanges();
 
+                currentOrder.SaveDriver();
+
                 Close();
             }
         }

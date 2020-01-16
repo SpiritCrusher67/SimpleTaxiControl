@@ -14,7 +14,7 @@ namespace SimpleTaxiControl
 {
     public partial class UserForm : Form
     {
-        public User CurentUser { get; }
+        public User CurrentUser { get; }
 
         public UserForm()
         {
@@ -25,12 +25,12 @@ namespace SimpleTaxiControl
         public UserForm(User user)
         {
             InitializeComponent();
-            CurentUser = user;
+            CurrentUser = user;
         }
 
         private void UserForm_Load(object sender, EventArgs e)
         {
-            userNameLabel.Text = "Пользователь: " + CurentUser.Name;
+            userNameLabel.Text = "Пользователь: " + CurrentUser.Name;
             LoadData();
 
             ContextMenuStrip freeOrdersMenu = new ContextMenuStrip();
@@ -58,7 +58,7 @@ namespace SimpleTaxiControl
         {
             if(freeOrdersListView.SelectedItems.Count > 0)
             {
-                new AppointDriver(ActiveOrders.GetFreeOrders().Where(o => o.Id.ToString() == freeOrdersListView.SelectedItems[0].SubItems[0].Text).First()).Show();
+                new AppointDriver(Order.GetFreeOrders().Where(o => o.Id.ToString() == freeOrdersListView.SelectedItems[0].SubItems[0].Text).First()).Show();
             }
             else
             {
@@ -71,7 +71,7 @@ namespace SimpleTaxiControl
         {
             if (freeOrdersListView.SelectedItems.Count > 0)
             {
-                new OrderEdit(ActiveOrders.GetFreeOrders().Where(o => o.Id.ToString() == freeOrdersListView.SelectedItems[0].SubItems[0].Text).First()).Show();
+                new OrderEdit(Order.GetFreeOrders().Where(o => o.Id.ToString() == freeOrdersListView.SelectedItems[0].SubItems[0].Text).First()).Show();
             }
             else
             {
@@ -84,7 +84,7 @@ namespace SimpleTaxiControl
         {
             if (acceptedOrdersListView.SelectedItems.Count>0)
             {
-                Order selectedOrder = ActiveOrders.GetAcceptedOrders().Where(o => o.Id.ToString() == acceptedOrdersListView.SelectedItems[0].SubItems[0].Text).First();
+                Order selectedOrder = Order.GetAcceptedOrders().Where(o => o.Id.ToString() == acceptedOrdersListView.SelectedItems[0].SubItems[0].Text).First();
 
                 selectedOrder.Status = OrderStatuses.InProgress;
 
@@ -97,7 +97,7 @@ namespace SimpleTaxiControl
         {
             if (executingOrdersListView.SelectedItems.Count > 0)
             {
-                Order selectedOrder = ActiveOrders.GetInProgressOrders().Where(o => o.Id.ToString() == executingOrdersListView.SelectedItems[0].SubItems[0].Text).First();
+                Order selectedOrder = Order.GetInProgressOrders().Where(o => o.Id.ToString() == executingOrdersListView.SelectedItems[0].SubItems[0].Text).First();
 
                 selectedOrder.Status = OrderStatuses.Сompleted;
 
@@ -119,7 +119,7 @@ namespace SimpleTaxiControl
         {
             if (incomingCallsListBox.SelectedItem != null)
             {
-                Call call = new Call(incomingCallsListBox.SelectedItem.ToString(), CurentUser);
+                Call call = new Call(incomingCallsListBox.SelectedItem.ToString(), CurrentUser);
                 incomingCallsListBox.Items.Remove(incomingCallsListBox.SelectedItem);
                 new TakeCallForm(call).Show();
 
@@ -129,18 +129,18 @@ namespace SimpleTaxiControl
 
         private void LoadData()
         {
-            foreach (Order order in ActiveOrders.GetFreeOrders())
+            foreach (Order order in Order.GetFreeOrders())
             {
                 freeOrdersListView.Items.Add(new ListViewItem(new string[] { order.Id.ToString(), order.AddressFrom, order.AddressTo }));
             }
 
-            if(ActiveOrders.GetAcceptedOrders().Count >0)
-                foreach (Order order in ActiveOrders.GetAcceptedOrders())
+            if(Order.GetAcceptedOrders().Count >0)
+                foreach (Order order in Order.GetAcceptedOrders())
                 {
                     acceptedOrdersListView.Items.Add(new ListViewItem(new string[] { order.Id.ToString(), order.AddressFrom, order.AddressTo,order.Driver.Id.ToString() }));
                 }
 
-            foreach (Order order in ActiveOrders.GetInProgressOrders())
+            foreach (Order order in Order.GetInProgressOrders())
             {
                 executingOrdersListView.Items.Add(new ListViewItem(new string[] { order.Id.ToString(), order.AddressFrom, order.AddressTo, order.Driver.Id.ToString() }));
             }

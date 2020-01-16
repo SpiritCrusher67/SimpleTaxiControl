@@ -26,15 +26,23 @@ namespace SimpleTaxiControl
 
             if (user != null)
             {
-                Program.Context.MainForm = new UserForm(user);
-                Program.Context.MainForm.Show();
-                Close();
+                if (user.Type == UserTypes.Admin)
+                {
+                    Program.Context.MainForm = new AdminForm(user);
+                }
+                else if(user.Type == UserTypes.Dispatcher)
+                {
+                    Program.Context.MainForm = new UserForm(user);
+                }
 
+                Program.Context.MainForm.Show();
+
+                Close();
 
             }
             else
             {
-                MessageBox.Show("Введен неверный логин и/или пароль");
+                MessageBox.Show("Введен неверный логин и/или пароль","Ошибка",MessageBoxButtons.RetryCancel,MessageBoxIcon.Error);
             }
         }
     }

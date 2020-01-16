@@ -13,9 +13,13 @@ namespace SimpleTaxiControl
 {
     public partial class AdminForm : Form
     {
-        public AdminForm()
+        public User CurentUser { get; }
+
+        public AdminForm(User user)
         {
             InitializeComponent();
+
+            CurentUser = user;
         }
 
         private void AdminForm_Load(object sender, EventArgs e)
@@ -24,7 +28,7 @@ namespace SimpleTaxiControl
 
             userCombobox.Items.AddRange(User.GetAllUsersFromDB().Select(u => u.Name).ToArray());
 
-            LoadOrders(ActiveOrders.GetAllOrders());
+            LoadOrders(Order.GetAllOrders());
 
             LoadUsers(User.GetAllUsersFromDB());
 
@@ -36,15 +40,30 @@ namespace SimpleTaxiControl
 
             usersContMenuRefresh.Click += UsersContMenuRefresh_Click;
 
+            usersContMenuShowPassword.Click += UsersContMenuShowPassword_Click;
+
             driversContMenuRefresh.Click += DriversContMenuRefresh_Click; 
 
+        }
+
+        private void UsersContMenuShowPassword_Click(object sender, EventArgs e)
+        {
+            if (usersListView.SelectedItems.Count > 0)
+            {
+                string password = User.GetUserPassword(usersListView.SelectedItems[0].Text,CurentUser);
+
+                if (MessageBox.Show($"Пароль: {password }\nСкопировать в буфер обмена?", "Пароль пользователя", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    Clipboard.SetText(password);
+                }
+            }
         }
 
         private void DriversContMenuRefresh_Click(object sender, EventArgs e) => LoadDrivers(OnlineDrivers.GetAllDrivers());
 
         private void UsersContMenuRefresh_Click(object sender, EventArgs e) => LoadUsers(User.GetAllUsersFromDB());
             
-        private void OrdersContMenuRefresh_Click(object sender, EventArgs e) => LoadOrders(ActiveOrders.GetAllOrders());
+        private void OrdersContMenuRefresh_Click(object sender, EventArgs e) => LoadOrders(Order.GetAllOrders());
 
         private void CallsContMenuRefresh_Click(object sender, EventArgs e) => LoadCalls();
 
@@ -89,7 +108,7 @@ namespace SimpleTaxiControl
 
         private void orderSearchBtn_Click(object sender, EventArgs e)
         {
-            IEnumerable<Order> orders = ActiveOrders.GetAllOrders();
+            IEnumerable<Order> orders = Order.GetAllOrders();
 
             if (orderId.Text != string.Empty)
             {
@@ -165,7 +184,8 @@ namespace SimpleTaxiControl
                 usersListView.Items.Add(new ListViewItem(new string[]
                 {
                     user.Login,
-                    user.Name
+                    user.Name,
+                    user.Type.ToString()
                 }));
             }
         }

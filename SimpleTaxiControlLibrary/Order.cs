@@ -86,7 +86,7 @@ namespace SimpleTaxiControlLibrary
 
             SqlParameter idParam = new SqlParameter
             {
-                ParameterName = "@id",
+                ParameterName = "OutId",
                 SqlDbType = SqlDbType.Int,
                 Direction = ParameterDirection.Output
             };
@@ -95,7 +95,7 @@ namespace SimpleTaxiControlLibrary
                 (AddressFrom,NumberFrom,AddressTo,NumberTo,Date,Status,CallId,Comment)
                 values 
                 (@AddressFrom,@NumberFrom,@AddressTo,@NumberTo,@Date,@Status,@CallId,@Comment);
-                set @id=SCOPE_IDENTITY()";
+                set @OutId=SCOPE_IDENTITY()";
 
             using (SqlConnection connection = new SqlConnection(DBConnection.ConnectionString))
             {
@@ -185,5 +185,35 @@ namespace SimpleTaxiControlLibrary
                 command.ExecuteNonQuery();
             }
         }
+
+        private static List<Order> GetOrders()
+        {
+            string query = $@"select id from Orders";
+            List<Order> orders = new List<Order>();
+
+            using (SqlConnection connection = new SqlConnection(DBConnection.ConnectionString))
+            {
+                connection.Open();
+
+                SqlCommand command = new SqlCommand(query, connection);
+
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        orders.Add(new Order(reader.GetInt32(0)));
+                    }
+                }
+            }
+            return orders;
+        }
+
+        public static List<Order> GetFreeOrders() => GetOrders().Where(o => o.Status == OrderStatuses.Free).ToList();
+
+        public static List<Order> GetAcceptedOrders() => GetOrders().Where(o => o.Status == OrderStatuses.Accepted).ToList();
+
+        public static List<Order> GetInProgressOrders() => GetOrders().Where(o => o.Status == OrderStatuses.InProgress).ToList();
+
+        public static List<Order> GetAllOrders() => GetOrders();
     }
 }
