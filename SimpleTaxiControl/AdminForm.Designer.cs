@@ -432,10 +432,10 @@
             this.columnHeader15});
             this.ordersListView.ContextMenuStrip = this.ordersContMenu;
             this.ordersListView.FullRowSelect = true;
-            this.ordersListView.Location = new System.Drawing.Point(9, 104);
+            this.ordersListView.Location = new System.Drawing.Point(9, 90);
             this.ordersListView.Margin = new System.Windows.Forms.Padding(4);
             this.ordersListView.Name = "ordersListView";
-            this.ordersListView.Size = new System.Drawing.Size(861, 211);
+            this.ordersListView.Size = new System.Drawing.Size(861, 225);
             this.ordersListView.TabIndex = 0;
             this.ordersListView.UseCompatibleStateImageBehavior = false;
             this.ordersListView.View = System.Windows.Forms.View.Details;
@@ -840,6 +840,7 @@
             this.Name = "AdminForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Меню администратора";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AdminForm_FormClosing);
             this.Load += new System.EventHandler(this.AdminForm_Load);
             this.callsGrBox.ResumeLayout(false);
             this.callsGrBox.PerformLayout();

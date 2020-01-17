@@ -273,5 +273,12 @@ namespace SimpleTaxiControl
         {
             new CreateDriver().Show();
         }
+
+        private void AdminForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Program.Context.MainForm = new AuthorizationForm();
+
+            Program.Context.MainForm.Show();
+        }
     }
 }

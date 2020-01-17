@@ -32,6 +32,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>icon.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -76,6 +79,12 @@
     <Compile Include="CreateUser.Designer.cs">
       <DependentUpon>CreateUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="EditConnection.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditConnection.Designer.cs">
+      <DependentUpon>EditConnection.cs</DependentUpon>
+    </Compile>
     <Compile Include="OrderEdit.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -110,6 +119,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CreateUser.resx">
       <DependentUpon>CreateUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditConnection.resx">
+      <DependentUpon>EditConnection.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="OrderEdit.resx">
       <DependentUpon>OrderEdit.cs</DependentUpon>
@@ -151,6 +163,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\logo1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icon.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

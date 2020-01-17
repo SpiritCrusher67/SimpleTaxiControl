@@ -47,6 +47,8 @@ namespace SimpleTaxiControl
             Save();
 
             currentOrder.SaveChanges();
+
+            Close();
         }
 
         private void Save()
@@ -65,6 +67,9 @@ namespace SimpleTaxiControl
 
         }
 
-
+        private void preOrderCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            preOrderDateTimePicker.Enabled = preOrderCheckBox.Checked;
+        }
     }
 }

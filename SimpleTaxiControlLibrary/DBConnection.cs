@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SimpleTaxiControlLibrary
 {
-    static class DBConnection
+    public static class DBConnection
     {
         public static string ConnectionString { get; set; } = @"Data Source=DESKTOP-O01TIT6\SQLEXPRESS;Initial Catalog=SimpleTaxiControlDB;Integrated Security=True";
 

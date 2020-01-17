@@ -82,9 +82,9 @@
             this.callsGrBox.Controls.Add(this.incomingCallsListBox);
             this.callsGrBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(178)))), ((int)(((byte)(115)))));
             this.callsGrBox.Location = new System.Drawing.Point(13, 37);
-            this.callsGrBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.callsGrBox.Margin = new System.Windows.Forms.Padding(4);
             this.callsGrBox.Name = "callsGrBox";
-            this.callsGrBox.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.callsGrBox.Padding = new System.Windows.Forms.Padding(4);
             this.callsGrBox.Size = new System.Drawing.Size(219, 300);
             this.callsGrBox.TabIndex = 1;
             this.callsGrBox.TabStop = false;
@@ -98,7 +98,7 @@
             this.takeСallBtn.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.takeСallBtn.ForeColor = System.Drawing.Color.Black;
             this.takeСallBtn.Location = new System.Drawing.Point(8, 245);
-            this.takeСallBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.takeСallBtn.Margin = new System.Windows.Forms.Padding(4);
             this.takeСallBtn.Name = "takeСallBtn";
             this.takeСallBtn.Size = new System.Drawing.Size(203, 47);
             this.takeСallBtn.TabIndex = 1;
@@ -117,7 +117,7 @@
             "8(800)555-35-35",
             "8(900)555-35-35"});
             this.incomingCallsListBox.Location = new System.Drawing.Point(9, 28);
-            this.incomingCallsListBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.incomingCallsListBox.Margin = new System.Windows.Forms.Padding(4);
             this.incomingCallsListBox.Name = "incomingCallsListBox";
             this.incomingCallsListBox.Size = new System.Drawing.Size(202, 214);
             this.incomingCallsListBox.TabIndex = 0;
@@ -127,9 +127,9 @@
             this.freeOrdersGrBox.Controls.Add(this.freeOrdersListView);
             this.freeOrdersGrBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(178)))), ((int)(((byte)(115)))));
             this.freeOrdersGrBox.Location = new System.Drawing.Point(240, 37);
-            this.freeOrdersGrBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.freeOrdersGrBox.Margin = new System.Windows.Forms.Padding(4);
             this.freeOrdersGrBox.Name = "freeOrdersGrBox";
-            this.freeOrdersGrBox.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.freeOrdersGrBox.Padding = new System.Windows.Forms.Padding(4);
             this.freeOrdersGrBox.Size = new System.Drawing.Size(364, 300);
             this.freeOrdersGrBox.TabIndex = 2;
             this.freeOrdersGrBox.TabStop = false;
@@ -144,7 +144,7 @@
             this.columnHeader2});
             this.freeOrdersListView.FullRowSelect = true;
             this.freeOrdersListView.Location = new System.Drawing.Point(9, 28);
-            this.freeOrdersListView.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.freeOrdersListView.Margin = new System.Windows.Forms.Padding(4);
             this.freeOrdersListView.Name = "freeOrdersListView";
             this.freeOrdersListView.Size = new System.Drawing.Size(346, 264);
             this.freeOrdersListView.TabIndex = 0;
@@ -171,9 +171,9 @@
             this.acceptedOrdersGrBox.Controls.Add(this.acceptedOrdersListView);
             this.acceptedOrdersGrBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(178)))), ((int)(((byte)(115)))));
             this.acceptedOrdersGrBox.Location = new System.Drawing.Point(612, 37);
-            this.acceptedOrdersGrBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.acceptedOrdersGrBox.Margin = new System.Windows.Forms.Padding(4);
             this.acceptedOrdersGrBox.Name = "acceptedOrdersGrBox";
-            this.acceptedOrdersGrBox.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.acceptedOrdersGrBox.Padding = new System.Windows.Forms.Padding(4);
             this.acceptedOrdersGrBox.Size = new System.Drawing.Size(483, 300);
             this.acceptedOrdersGrBox.TabIndex = 3;
             this.acceptedOrdersGrBox.TabStop = false;
@@ -188,7 +188,7 @@
             this.columnHeader7});
             this.acceptedOrdersListView.FullRowSelect = true;
             this.acceptedOrdersListView.Location = new System.Drawing.Point(9, 28);
-            this.acceptedOrdersListView.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.acceptedOrdersListView.Margin = new System.Windows.Forms.Padding(4);
             this.acceptedOrdersListView.Name = "acceptedOrdersListView";
             this.acceptedOrdersListView.Size = new System.Drawing.Size(466, 264);
             this.acceptedOrdersListView.TabIndex = 0;
@@ -220,9 +220,9 @@
             this.executingOrdersGrBox.Controls.Add(this.executingOrdersListView);
             this.executingOrdersGrBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(178)))), ((int)(((byte)(115)))));
             this.executingOrdersGrBox.Location = new System.Drawing.Point(488, 345);
-            this.executingOrdersGrBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.executingOrdersGrBox.Margin = new System.Windows.Forms.Padding(4);
             this.executingOrdersGrBox.Name = "executingOrdersGrBox";
-            this.executingOrdersGrBox.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.executingOrdersGrBox.Padding = new System.Windows.Forms.Padding(4);
             this.executingOrdersGrBox.Size = new System.Drawing.Size(607, 310);
             this.executingOrdersGrBox.TabIndex = 4;
             this.executingOrdersGrBox.TabStop = false;
@@ -237,7 +237,7 @@
             this.columnHeader11});
             this.executingOrdersListView.FullRowSelect = true;
             this.executingOrdersListView.Location = new System.Drawing.Point(9, 28);
-            this.executingOrdersListView.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.executingOrdersListView.Margin = new System.Windows.Forms.Padding(4);
             this.executingOrdersListView.Name = "executingOrdersListView";
             this.executingOrdersListView.Size = new System.Drawing.Size(590, 274);
             this.executingOrdersListView.TabIndex = 0;
@@ -268,10 +268,10 @@
             // 
             this.driversGrBox.Controls.Add(this.driversListView);
             this.driversGrBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(178)))), ((int)(((byte)(115)))));
-            this.driversGrBox.Location = new System.Drawing.Point(17, 345);
-            this.driversGrBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.driversGrBox.Location = new System.Drawing.Point(13, 345);
+            this.driversGrBox.Margin = new System.Windows.Forms.Padding(4);
             this.driversGrBox.Name = "driversGrBox";
-            this.driversGrBox.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.driversGrBox.Padding = new System.Windows.Forms.Padding(4);
             this.driversGrBox.Size = new System.Drawing.Size(467, 310);
             this.driversGrBox.TabIndex = 5;
             this.driversGrBox.TabStop = false;
@@ -285,7 +285,7 @@
             this.columnHeader18});
             this.driversListView.FullRowSelect = true;
             this.driversListView.Location = new System.Drawing.Point(9, 28);
-            this.driversListView.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.driversListView.Margin = new System.Windows.Forms.Padding(4);
             this.driversListView.Name = "driversListView";
             this.driversListView.Size = new System.Drawing.Size(450, 274);
             this.driversListView.TabIndex = 0;
@@ -334,12 +334,13 @@
             this.Controls.Add(this.callsGrBox);
             this.Controls.Add(this.userNameLabel);
             this.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximumSize = new System.Drawing.Size(1120, 710);
             this.MinimumSize = new System.Drawing.Size(1120, 710);
             this.Name = "UserForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Меню пользователя";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.UserForm_FormClosing);
             this.Load += new System.EventHandler(this.UserForm_Load);
             this.callsGrBox.ResumeLayout(false);
             this.freeOrdersGrBox.ResumeLayout(false);

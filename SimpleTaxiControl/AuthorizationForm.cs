@@ -22,7 +22,11 @@ namespace SimpleTaxiControl
 
         private void logInBtn_Click(object sender, EventArgs e)
         {
-            User user = User.GetUser(loginTextBox.Text, passwordTextBox.Text);
+            User user = null;
+
+            try { user = User.GetUser(loginTextBox.Text, passwordTextBox.Text); }
+
+            catch { new EditConnection().Show(); }
 
             if (user != null)
             {
@@ -30,7 +34,7 @@ namespace SimpleTaxiControl
                 {
                     Program.Context.MainForm = new AdminForm(user);
                 }
-                else if(user.Type == UserTypes.Dispatcher)
+                else if (user.Type == UserTypes.Dispatcher)
                 {
                     Program.Context.MainForm = new UserForm(user);
                 }
@@ -40,10 +44,7 @@ namespace SimpleTaxiControl
                 Close();
 
             }
-            else
-            {
-                MessageBox.Show("Введен неверный логин и/или пароль","Ошибка",MessageBoxButtons.RetryCancel,MessageBoxIcon.Error);
-            }
+            else if (MessageBox.Show("Введен неверный логин и/или пароль", "Ошибка", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error) == DialogResult.Cancel) Close();
         }
     }
 }

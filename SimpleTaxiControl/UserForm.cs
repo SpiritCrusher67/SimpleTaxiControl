@@ -64,11 +64,8 @@ namespace SimpleTaxiControl
             {
                 new AppointDriver(Order.GetFreeOrders().Where(o => o.Id.ToString() == freeOrdersListView.SelectedItems[0].SubItems[0].Text).First()).Show();
             }
-            else
-            {
-                MessageBox.Show("Выберите заказ");
-
-            }
+            else MessageBox.Show("Выберите заказ", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            
         }
 
         private void EditOrder(object sender, EventArgs e)
@@ -77,11 +74,7 @@ namespace SimpleTaxiControl
             {
                 new OrderEdit(Order.GetFreeOrders().Where(o => o.Id.ToString() == freeOrdersListView.SelectedItems[0].SubItems[0].Text).First()).Show();
             }
-            else
-            {
-                MessageBox.Show("Выберите заказ");
-
-            }
+            else MessageBox.Show("Выберите заказ", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
         }
 
         private void SetOrderInProgress(object sender, EventArgs e)
@@ -128,6 +121,7 @@ namespace SimpleTaxiControl
                 new TakeCallForm(call).Show();
 
             }
+            else MessageBox.Show("Выберите звонок","Ошибка",MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
 
         }
 
@@ -170,9 +164,11 @@ namespace SimpleTaxiControl
             driversListView.Items.Clear();
         }
 
-        private void refreshData_Click(object sender, EventArgs e)
+        private void UserForm_FormClosing(object sender, FormClosingEventArgs e)
         {
+            Program.Context.MainForm = new AuthorizationForm();
 
+            Program.Context.MainForm.Show();
         }
     }
 }
