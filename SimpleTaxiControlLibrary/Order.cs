@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Data.SqlClient;
+using System.Data.SQLite;
 using System.Data;
 
 namespace SimpleTaxiControlLibrary
@@ -30,25 +28,25 @@ namespace SimpleTaxiControlLibrary
 
         public Driver Driver { get; set; }
 
-        private SqlParameter[] GetSqlParametrs() => new SqlParameter[]
+        private SQLiteParameter[] GetSQLiteParametrs() => new SQLiteParameter[]
         {
-            new SqlParameter("@Id", Id),
+            new SQLiteParameter("@Id", Id),
 
-            new SqlParameter("@AddressFrom", AddressFrom),
+            new SQLiteParameter("@AddressFrom", AddressFrom),
 
-            new SqlParameter("@NumberFrom", NumberFrom),
+            new SQLiteParameter("@NumberFrom", NumberFrom),
 
-            new SqlParameter("@AddressTo", AddressTo),
+            new SQLiteParameter("@AddressTo", AddressTo),
 
-            new SqlParameter("@NumberTo", NumberTo),
+            new SQLiteParameter("@NumberTo", NumberTo),
 
-            new SqlParameter("@Date", Date),
+            new SQLiteParameter("@Date", Date),
 
-            new SqlParameter("@Comment", Comment),
+            new SQLiteParameter("@Comment", Comment),
 
-            new SqlParameter("@Status", Status),
+            new SQLiteParameter("@Status", Status),
 
-            new SqlParameter("@CallId", Call.Id)
+            new SQLiteParameter("@CallId", Call.Id)
 
         }; 
 
@@ -84,51 +82,40 @@ namespace SimpleTaxiControlLibrary
         private void SaveOrder()
         {
 
-            SqlParameter idParam = new SqlParameter
-            {
-                ParameterName = "OutId",
-                SqlDbType = SqlDbType.Int,
-                Direction = ParameterDirection.Output
-            };
-
             string query = @"insert into Orders 
                 (AddressFrom,NumberFrom,AddressTo,NumberTo,Date,Status,CallId,Comment)
                 values 
                 (@AddressFrom,@NumberFrom,@AddressTo,@NumberTo,@Date,@Status,@CallId,@Comment);
-                set @OutId=SCOPE_IDENTITY()";
+                SELECT last_insert_rowid()";
 
-            using (SqlConnection connection = new SqlConnection(DBConnection.ConnectionString))
+            using (SQLiteConnection connection = new SQLiteConnection(DBConnection.ConnectionString))
             {
                 connection.Open();
 
-                SqlCommand command = new SqlCommand(query, connection);
+                SQLiteCommand command = new SQLiteCommand(query, connection);
 
-                command.Parameters.Add(idParam);
+                command.Parameters.AddRange(GetSQLiteParametrs());
 
-                command.Parameters.AddRange(GetSqlParametrs());
-
-                command.ExecuteNonQuery();
+                Id = int.Parse(command.ExecuteScalar().ToString());
             }
-
-            Id = (int)idParam.Value;
 
         }
 
         private void loadOrderFromDB(int id)
         {
-            SqlParameter idParam = new SqlParameter("@id", id);
+            SQLiteParameter idParam = new SQLiteParameter("@id", id);
 
             string query = "select * from Orders where id = @id";
 
-            using (SqlConnection connection = new SqlConnection(DBConnection.ConnectionString))
+            using (SQLiteConnection connection = new SQLiteConnection(DBConnection.ConnectionString))
             {
                 connection.Open();
 
-                SqlCommand command = new SqlCommand(query, connection);
+                SQLiteCommand command = new SQLiteCommand(query, connection);
 
                 command.Parameters.Add(idParam);
             
-                using (SqlDataReader reader = command.ExecuteReader())
+                using (SQLiteDataReader reader = command.ExecuteReader())
                 {
                     if (reader.Read())
                     {
@@ -137,7 +124,7 @@ namespace SimpleTaxiControlLibrary
                         NumberFrom = reader.GetString(2);
                         AddressTo = reader.GetString(3);
                         NumberTo = reader.GetString(4);
-                        Date = reader.GetDateTime(5);
+                        Date = DateTime.Parse(reader.GetString(5));
                         Status = (OrderStatuses)reader.GetInt32(6);
                         Call = new Call(reader.GetInt32(7));
                         Comment = reader.GetValue(8).ToString();
@@ -153,7 +140,7 @@ namespace SimpleTaxiControlLibrary
             string query = @"update Orders set 
                 DriverId = @DriverId
                 where Id = @Id";
-            Save(query,new SqlParameter[] { new SqlParameter("@DriverId",Driver.Id), new SqlParameter("@Id", Id) });
+            Save(query,new SQLiteParameter[] { new SQLiteParameter("@DriverId",Driver.Id), new SQLiteParameter("@Id", Id) });
         }
 
         public void SaveChanges()
@@ -168,17 +155,17 @@ namespace SimpleTaxiControlLibrary
                 CallId = @CallId,
                 Comment = @Comment
                 where Id = @Id";
-            Save(query, GetSqlParametrs());
+            Save(query, GetSQLiteParametrs());
         }
 
-        private void Save(string query,SqlParameter[] parameters)
+        private void Save(string query,SQLiteParameter[] parameters)
         {
 
-            using (SqlConnection connection = new SqlConnection(DBConnection.ConnectionString))
+            using (SQLiteConnection connection = new SQLiteConnection(DBConnection.ConnectionString))
             {
                 connection.Open();
 
-                SqlCommand command = new SqlCommand(query, connection);
+                SQLiteCommand command = new SQLiteCommand(query, connection);
 
                 command.Parameters.AddRange(parameters);
 
@@ -191,13 +178,13 @@ namespace SimpleTaxiControlLibrary
             string query = $@"select id from Orders";
             List<Order> orders = new List<Order>();
 
-            using (SqlConnection connection = new SqlConnection(DBConnection.ConnectionString))
+            using (SQLiteConnection connection = new SQLiteConnection(DBConnection.ConnectionString))
             {
                 connection.Open();
 
-                SqlCommand command = new SqlCommand(query, connection);
+                SQLiteCommand command = new SQLiteCommand(query, connection);
 
-                using (SqlDataReader reader = command.ExecuteReader())
+                using (SQLiteDataReader reader = command.ExecuteReader())
                 {
                     while (reader.Read())
                     {

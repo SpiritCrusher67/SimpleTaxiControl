@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Data.SqlClient;
 using System.Data;
+using System.Data.SQLite;
 
 namespace SimpleTaxiControlLibrary
 {
@@ -33,57 +30,49 @@ namespace SimpleTaxiControlLibrary
 
         public void SaveCall()
         {
-            SqlParameter numberparam = new SqlParameter("@Number", Number);
+            SQLiteParameter numberparam = new SQLiteParameter("@Number", Number);
 
-            SqlParameter loginParam = new SqlParameter("@UserLogin", ResponsibleUser.Login);
+            SQLiteParameter loginParam = new SQLiteParameter("@UserLogin", ResponsibleUser.Login);
 
-            SqlParameter dateparam = new SqlParameter("@Date", DateTime.Now);
+            SQLiteParameter dateparam = new SQLiteParameter("@Date", DateTime.Now.ToString());
 
-            SqlParameter idParam = new SqlParameter
-            {
-                ParameterName = "@id",
-                SqlDbType = SqlDbType.Int,
-                Direction = ParameterDirection.Output
-            };
+            string query = "insert into Calls (Number,UserLogin,Date) values (@Number,@UserLogin,@Date);SELECT last_insert_rowid()";
 
-            string query = "insert into Calls (Number,UserLogin,Date) values (@Number,@UserLogin,@Date);set @id=SCOPE_IDENTITY()";
-
-            using (SqlConnection connection = new SqlConnection(DBConnection.ConnectionString))
+            using (SQLiteConnection connection = new SQLiteConnection(DBConnection.ConnectionString))
             {
                 connection.Open();
 
-                SqlCommand command = new SqlCommand(query, connection);
+                SQLiteCommand command = new SQLiteCommand(query, connection);
 
-                command.Parameters.AddRange(new SqlParameter[] { numberparam, loginParam,dateparam,idParam});
+                command.Parameters.AddRange(new SQLiteParameter[] { numberparam, loginParam,dateparam});
 
-                command.ExecuteNonQuery();
+                Id = int.Parse(command.ExecuteScalar().ToString());
             }
 
-            Id = (int)idParam.Value;
         }
 
         private void LoadCallFromDB(int id)
         {
-            SqlParameter idParam = new SqlParameter("@id", id);
+            SQLiteParameter idParam = new SQLiteParameter("@id", id);
 
             string query = "select * from Calls where id = @id";
 
-            using (SqlConnection connection = new SqlConnection(DBConnection.ConnectionString))
+            using (SQLiteConnection connection = new SQLiteConnection(DBConnection.ConnectionString))
             {
                 connection.Open();
 
-                SqlCommand command = new SqlCommand(query, connection);
+                SQLiteCommand command = new SQLiteCommand(query, connection);
 
                 command.Parameters.Add(idParam);
 
-                using (SqlDataReader reader = command.ExecuteReader())
+                using (SQLiteDataReader reader = command.ExecuteReader())
                 {
                     if (reader.Read())
                     {
                         Id = reader.GetInt32(0);
                         Number = reader.GetString(1);
                         ResponsibleUser = User.GetUser(reader.GetString(2));
-                        Date = reader.GetDateTime(3);
+                        Date = DateTime.Parse(reader.GetString(3));
                     }
                 }
             }
@@ -97,11 +86,11 @@ namespace SimpleTaxiControlLibrary
 
             string query = "select Id from Calls";
 
-            using (SqlConnection connection = new SqlConnection(DBConnection.ConnectionString))
+            using (SQLiteConnection connection = new SQLiteConnection(DBConnection.ConnectionString))
             {
                 connection.Open();
 
-                using (SqlDataReader reader = new SqlCommand(query, connection).ExecuteReader())
+                using (SQLiteDataReader reader = new SQLiteCommand(query, connection).ExecuteReader())
                 {
                     while (reader.Read())
                     {

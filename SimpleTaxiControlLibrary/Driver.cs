@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Data.SqlClient;
+﻿using System.Data.SQLite;
 
 namespace SimpleTaxiControlLibrary
 {
@@ -18,15 +13,15 @@ namespace SimpleTaxiControlLibrary
 
         public DriverStatuses Status { get; set; }
 
-        private SqlParameter[] GetSqlParametrs() => new SqlParameter[]
+        private SQLiteParameter[] GetSqlParametrs() => new SQLiteParameter[]
         {
-            new SqlParameter("@Id",Id),
+            new SQLiteParameter("@Id",Id),
 
-            new SqlParameter("@Model",Model),
+            new SQLiteParameter("@Model",Model),
 
-            new SqlParameter("@Name",Name),
+            new SQLiteParameter("@Name",Name),
 
-            new SqlParameter("@Status",Status)
+            new SQLiteParameter("@Status",Status)
         };
 
         public Driver(int id)
@@ -36,19 +31,19 @@ namespace SimpleTaxiControlLibrary
 
         private void LoadDriverFromDB(int id)
         {
-            SqlParameter idparam = new SqlParameter("@id", id);
+            SQLiteParameter idparam = new SQLiteParameter("@id", id);
 
             string query = "select * from Drivers where id = @id";
 
-            using (SqlConnection connection = new SqlConnection(DBConnection.ConnectionString))
+            using (SQLiteConnection connection = new SQLiteConnection(DBConnection.ConnectionString))
             {
                 connection.Open();
 
-                SqlCommand command = new SqlCommand(query, connection);
+                SQLiteCommand command = new SQLiteCommand(query, connection);
 
                 command.Parameters.Add(idparam);
 
-                using (SqlDataReader reader = command.ExecuteReader())
+                using (SQLiteDataReader reader = command.ExecuteReader())
                 {
                     if (reader.Read())
                     {
@@ -72,11 +67,11 @@ namespace SimpleTaxiControlLibrary
                 Status = @Status
                 where Id = @Id";
 
-            using (SqlConnection connection = new SqlConnection(DBConnection.ConnectionString))
+            using (SQLiteConnection connection = new SQLiteConnection(DBConnection.ConnectionString))
             {
                 connection.Open();
 
-                SqlCommand command = new SqlCommand(query, connection);
+                SQLiteCommand command = new SQLiteCommand(query, connection);
 
                 command.Parameters.AddRange(GetSqlParametrs());
 
@@ -89,17 +84,17 @@ namespace SimpleTaxiControlLibrary
             int rowsInvolved = 0;
             string query = "insert into Drivers (Name,Model,Status) values (@Name,@Model,@Status)";
 
-            using (SqlConnection connection = new SqlConnection(DBConnection.ConnectionString))
+            using (SQLiteConnection connection = new SQLiteConnection(DBConnection.ConnectionString))
             {
                 connection.Open();
 
-                SqlCommand command = new SqlCommand(query, connection);
+                SQLiteCommand command = new SQLiteCommand(query, connection);
 
-                command.Parameters.AddRange(new SqlParameter[]
+                command.Parameters.AddRange(new SQLiteParameter[]
                 {
-                    new SqlParameter("@Name",name),
-                    new SqlParameter("@Model",model),
-                    new SqlParameter("@Status",DriverStatuses.Free)
+                    new SQLiteParameter("@Name",name),
+                    new SQLiteParameter("@Model",model),
+                    new SQLiteParameter("@Status",DriverStatuses.Free)
 
                 });
                 try { rowsInvolved = command.ExecuteNonQuery(); }

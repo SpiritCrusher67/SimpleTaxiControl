@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using SimpleTaxiControlLibrary;
 
@@ -24,9 +17,9 @@ namespace SimpleTaxiControl
         {
             User user = null;
 
-            try { user = User.GetUser(loginTextBox.Text, passwordTextBox.Text); }
+            user = User.GetUser(loginTextBox.Text, passwordTextBox.Text); 
 
-            catch { new EditConnection().Show(); }
+            //catch (Exception ex) { MessageBox.Show(ex.Message); }
 
             if (user != null)
             {

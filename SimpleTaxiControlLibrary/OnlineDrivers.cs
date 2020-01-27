@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
+﻿using System.Collections.Generic;
+using System.Data.SQLite;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SimpleTaxiControlLibrary
 {
@@ -32,13 +29,13 @@ namespace SimpleTaxiControlLibrary
         {
             string query = $@"select id from Drivers";
 
-            using (SqlConnection connection = new SqlConnection(DBConnection.ConnectionString))
+            using (SQLiteConnection connection = new SQLiteConnection(DBConnection.ConnectionString))
             {
                 connection.Open();
 
-                SqlCommand command = new SqlCommand(query, connection);
+                SQLiteCommand command = new SQLiteCommand(query, connection);
 
-                using (SqlDataReader reader = command.ExecuteReader())
+                using (SQLiteDataReader reader = command.ExecuteReader())
                 {
                     while (reader.Read())
                     {

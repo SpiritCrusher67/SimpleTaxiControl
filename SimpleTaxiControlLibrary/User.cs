@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Data.SqlClient;
+using System.Data.SQLite;
 
 namespace SimpleTaxiControlLibrary
 {
@@ -17,14 +14,14 @@ namespace SimpleTaxiControlLibrary
 
         public static User GetUser(string login, string password)
         {
-            using (SqlConnection connection = new SqlConnection(DBConnection.ConnectionString))
+            using (SQLiteConnection connection = new SQLiteConnection(DBConnection.ConnectionString))
             {
                 connection.Open();
-                SqlCommand command = new SqlCommand("select Name, Type from Users where login = @login and password = @password",connection);
-                SqlParameter loginparam = new SqlParameter("@login", login);
+                SQLiteCommand command = new SQLiteCommand("select Name, Type from Users where login = @login and password = @password",connection);
+                SQLiteParameter loginparam = new SQLiteParameter("@login", login);
                 command.Parameters.Add(loginparam);
-                command.Parameters.Add(new SqlParameter("@password", password));
-                using (SqlDataReader reader = command.ExecuteReader())
+                command.Parameters.Add(new SQLiteParameter("@password", password));
+                using (SQLiteDataReader reader = command.ExecuteReader())
                 {
                     if (reader.Read())
                     {
@@ -32,7 +29,7 @@ namespace SimpleTaxiControlLibrary
                         {
                             Login = loginparam.Value.ToString(),
                             Name = reader.GetString(0),
-                            Type = (UserTypes)reader.GetValue(1)
+                            Type = (UserTypes)reader.GetInt32(1)
                         };
                     }
                     else
@@ -45,13 +42,13 @@ namespace SimpleTaxiControlLibrary
 
         public static User GetUser(string login)
         {
-            using (SqlConnection connection = new SqlConnection(DBConnection.ConnectionString))
+            using (SQLiteConnection connection = new SQLiteConnection(DBConnection.ConnectionString))
             {
                 connection.Open();
-                SqlCommand command = new SqlCommand("select Name, Type from Users where login = @login", connection);
-                SqlParameter loginparam = new SqlParameter("@login", login);
+                SQLiteCommand command = new SQLiteCommand("select Name, Type from Users where login = @login", connection);
+                SQLiteParameter loginparam = new SQLiteParameter("@login", login);
                 command.Parameters.Add(loginparam);
-                using (SqlDataReader reader = command.ExecuteReader())
+                using (SQLiteDataReader reader = command.ExecuteReader())
                 {
                     if (reader.Read())
                     {
@@ -59,7 +56,7 @@ namespace SimpleTaxiControlLibrary
                         {
                             Login = loginparam.Value.ToString(),
                             Name = reader.GetString(0),
-                            Type = (UserTypes)reader.GetValue(1)
+                            Type = (UserTypes)reader.GetInt32(1)
                         };
                     }
                     else
@@ -79,11 +76,11 @@ namespace SimpleTaxiControlLibrary
 
             string query = "select Login from Users";
 
-            using (SqlConnection connection = new SqlConnection(DBConnection.ConnectionString))
+            using (SQLiteConnection connection = new SQLiteConnection(DBConnection.ConnectionString))
             {
                 connection.Open();
 
-                using (SqlDataReader reader = new SqlCommand(query, connection).ExecuteReader())
+                using (SQLiteDataReader reader = new SQLiteCommand(query, connection).ExecuteReader())
                 {
                     while (reader.Read())
                     {
@@ -105,18 +102,18 @@ namespace SimpleTaxiControlLibrary
             int rowsInvolved = 0;
             string query = "insert into Users (Login,Password,Name,Type) values (@Login,@Password,@Name,@Type)";
 
-            using (SqlConnection connection = new SqlConnection(DBConnection.ConnectionString))
+            using (SQLiteConnection connection = new SQLiteConnection(DBConnection.ConnectionString))
             {
                 connection.Open();
 
-                SqlCommand command = new SqlCommand(query,connection);
+                SQLiteCommand command = new SQLiteCommand(query,connection);
 
-                command.Parameters.AddRange(new SqlParameter[]
+                command.Parameters.AddRange(new SQLiteParameter[]
                 {
-                    new SqlParameter("@Login",login),
-                    new SqlParameter("@Password",password),
-                    new SqlParameter("@Name",name),
-                    new SqlParameter("@Type",type)
+                    new SQLiteParameter("@Login",login),
+                    new SQLiteParameter("@Password",password),
+                    new SQLiteParameter("@Name",name),
+                    new SQLiteParameter("@Type",type)
 
                 });
                 try { rowsInvolved = command.ExecuteNonQuery(); }
@@ -144,13 +141,13 @@ namespace SimpleTaxiControlLibrary
         {
             if (user.Type == UserTypes.Admin)
             {
-                using (SqlConnection connection = new SqlConnection(DBConnection.ConnectionString))
+                using (SQLiteConnection connection = new SQLiteConnection(DBConnection.ConnectionString))
                 {
                     connection.Open();
 
-                    SqlCommand command = new SqlCommand("select Password from Users where Login = @Login",connection);
+                    SQLiteCommand command = new SQLiteCommand("select Password from Users where Login = @Login",connection);
 
-                    command.Parameters.Add(new SqlParameter("@Login", login));
+                    command.Parameters.Add(new SQLiteParameter("@Login", login));
 
                     return command.ExecuteScalar().ToString();
                 }
